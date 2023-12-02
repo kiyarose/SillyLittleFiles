@@ -62,7 +62,7 @@
 }
 </textarea><br>
     <button onclick="submit()">Let 'em Cook</button>
-
+    <button onclick="download()">Download</button>
     <script>
         function submit() {
             var nametype = document.getElementById('nametype').value
@@ -77,6 +77,19 @@
             text = text.replace('"Password": "PASSD"', '"Password": "' + password + '"');
             inputBox.value = text;
         }
+            function download() {
+  var text = document.getElementById("inputBox").value;
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', "pop.onc");
+
+  element.style.display = 'none';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
     </script>
     </center>
 </body>
