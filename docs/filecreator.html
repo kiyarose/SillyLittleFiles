@@ -63,7 +63,7 @@
 </textarea><br>
     <button onclick="submit()" onclick="showStuff('reloadbtn'); return false;">Let 'em Cook</button>
     <button onclick="download()">Download</button>
-    <button onclick="reload()">New Project</button>
+    <button onclick="reload()" style="display: none">New Project</button>
     <script>
         function submit() {
             var nametype = document.getElementById('nametype').value
@@ -98,10 +98,7 @@
 }
 function showStuff(id, text, btn) {
     document.getElementById(id).style.display = 'block';
-    // hide the lorem ipsum text
-    document.getElementById(text).style.display = 'none';
-    // hide the link
-    btn.style.display = 'none';
+
 }
 function reload() {
  location.reload()
