@@ -61,9 +61,9 @@
 ]
 }
 </textarea><br>
-    <button onclick="submit()" onclick="showStuff('reloadbtn'); return false;">Let 'em Cook</button>
+    <button onclick="submit()">Let 'em Cook</button>
     <button onclick="download()">Download</button>
-    <button onclick="reload()" style="display: none">New Project</button>
+    <button id="submitbutton" onclick="reload()" style="display: none">New Project</button>
     <script>
         function submit() {
             var nametype = document.getElementById('nametype').value
@@ -82,6 +82,7 @@
             text = text.replace('"Password": "PASSD"', '"Password": "' + password + '"');
             inputBox.value = text;
             inputBox.disabled = true;
+            document.getElementById("submitbutton").style.display = 'block';
         }
             function download() {
   var text = document.getElementById("inputBox").value;
@@ -95,10 +96,6 @@
   element.click();
 
   document.body.removeChild(element);
-}
-function showStuff(id, text, btn) {
-    document.getElementById(id).style.display = 'block';
-
 }
 function reload() {
  location.reload()
