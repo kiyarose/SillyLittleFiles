@@ -12,7 +12,7 @@
         <input type="password" id="password" name="password"><br>
         <input type="button" value="Submit" onclick="download()">
     </form>
-
+    <pre id="output"></pre>
     <script>
         var config = {
             "Type": "UnencryptedConfiguration",
@@ -68,13 +68,7 @@
         function download() {
             config.Username = document.getElementById('username').value;
             config.Password = document.getElementById('password').value;
-            var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(config));
-            var downloadAnchorNode = document.createElement('a');
-            downloadAnchorNode.setAttribute("href", dataStr);
-            downloadAnchorNode.setAttribute("download", "config.json");
-            document.body.appendChild(downloadAnchorNode);
-            downloadAnchorNode.click();
-            downloadAnchorNode.remove();
+document.getElementById('output').textContent = JSON.stringify(config, null, 2);
         }
     </script>
 </body>
