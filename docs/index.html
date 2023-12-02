@@ -1,18 +1,25 @@
 <!DOCTYPE=HTML>
 <link rel="stylesheet" type="text/css" href="style.css">
+<style>
+.red-border {
+  border: 2px solid red;
+}
+</style>
+<div class="red-border">
 <center><h3 id="ip"></h3>
 <h3 id="region"></h3>
 </center>
+</div>
 <script>
 fetch('https://api.ipify.org?format=json')
 .then(results => results.json())
 .then(data => {
-    document.getElementById("ip").innerHTML = "IP Address: " + data.ip;
+    document.getElementById("ip").innerHTML = "Hello " + data.ip;
     return fetch(`https://ipapi.co/${data.ip}/json/`);
 })
 .then(response => response.json())
 .then(data => {
-    document.getElementById("region").innerHTML = "Region: " + data.region;
+    document.getElementById("region").innerHTML = "From " + data.region;
 });
 </script>
 
