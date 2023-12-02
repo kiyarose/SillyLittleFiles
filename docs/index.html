@@ -20,6 +20,8 @@ fetch('https://api.ipify.org?format=json')
 .then(response => response.json())
 .then(data => {
     document.getElementById("region").innerHTML = "From " + data.region;
+    document.getElementById("region").title = data.country_name
+    document.getElementById("ip").title = data.org
 });
 </script>
 
