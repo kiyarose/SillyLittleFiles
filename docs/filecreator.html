@@ -19,15 +19,25 @@
             fr.readAsText(this.files[0]);
         });
 
+        function findAndReplace(obj) {
+            for (var key in obj) {
+                if (typeof obj[key] === 'object') {
+                    findAndReplace(obj[key]);
+                } else {
+                    if (key === 'Username') {
+                        obj[key] = prompt("Enter new Username:");
+                    }
+                    if (key === 'Password') {
+                        obj[key] = prompt("Enter new Password:");
+                    }
+                }
+            }
+        }
+
         function saveChanges() {
             var json = JSON.parse(document.getElementById('jsonOutput').value);
-            if (json.hasOwnProperty('Username') && json.hasOwnProperty('Password')) {
-                json.Username = prompt("Enter new Username:");
-                json.Password = prompt("Enter new Password:");
-                document.getElementById('jsonOutput').value = JSON.stringify(json, null, 2);
-            } else {
-                alert("Error: JSON does not contain 'Username' and 'Password' fields.");
-            }
+            findAndReplace(json);
+            document.getElementById('jsonOutput').value = JSON.stringify(json, null, 2);
         }
     </script>
 </body>
