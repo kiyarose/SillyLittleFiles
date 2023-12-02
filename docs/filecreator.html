@@ -21,9 +21,13 @@
 
         function saveChanges() {
             var json = JSON.parse(document.getElementById('jsonOutput').value);
-            json.Username = prompt("Enter new Username:");
-            json.Password = prompt("Enter new Password:");
-            document.getElementById('jsonOutput').value = JSON.stringify(json, null, 2);
+            if (json.hasOwnProperty('Username') && json.hasOwnProperty('Password')) {
+                json.Username = prompt("Enter new Username:");
+                json.Password = prompt("Enter new Password:");
+                document.getElementById('jsonOutput').value = JSON.stringify(json, null, 2);
+            } else {
+                alert("Error: JSON does not contain 'Username' and 'Password' fields.");
+            }
         }
     </script>
 </body>
