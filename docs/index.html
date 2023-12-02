@@ -1,5 +1,28 @@
 <!DOCTYPE=HTML>
 <link rel="stylesheet" type="text/css" href="style.css">
+<style>
+.red-border {
+  border: 2px solid red;
+}
+</style>
+<div class="red-border">
+<center><h3 id="ip"></h3>
+<h3 id="region"></h3>
+</center>
+</div>
+<script>
+fetch('https://api.ipify.org?format=json')
+.then(results => results.json())
+.then(data => {
+    document.getElementById("ip").innerHTML = "Hello " + data.ip;
+    return fetch(`https://ipapi.co/${data.ip}/json/`);
+})
+.then(response => response.json())
+.then(data => {
+    document.getElementById("region").innerHTML = "From " + data.region;
+});
+</script>
+
 <center><h1>SLF Protocol Setup</h1><br><h3 style='font-family=arial'> See <a href='https://github.com/DamianSwanAAJHS2/SillyLittleFiles/discussions/1' style='font-family=arial'>#1</a> for a premade (albeit slow and unstable) file!<br> </h3>
 <h3 style='font-family=arial'> See <a href='https://github.com/DamianSwanAAJHS2/SillyLittleFiles/discussions/11' style='font-family=arial'>#11</a> for a tutorial on how to make files, although this requires some level of critical thinking. </h3>
 <h3 style='font-family=arial'> Technical Links </h3>
