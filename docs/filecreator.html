@@ -1,12 +1,17 @@
 <!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="style.css">
+<center>
 <html>
 <head>
-    <title>Edit JSON File</title>
+    <a href="/">←Back</a>
+    <title>Username and Password</title>
 </head>
-<body>
-    <input type="file" id="jsonFile" accept=".json">
-    <br>
-    <textarea id="jsonOutput" rows="10" cols="50">{
+<body>File Name
+    <input value="Silly Little Clone" placeholder="Config Name" id ="nametype"></input><br>
+    Host Name<input value="89.39.107.188" placeholder="Host Server" id ="hostname"></input><br>
+    User Name<input value="ih1M47aG67vpkrph" placeholder="Username" id ="username"></input><br>
+   Pass Key <input value="lqhscAT04QLKPiK5sDtSTKaaIyQexkDW" placeholder="Password" id="password"></input><br>
+    <textarea id="inputBox" rows="4" cols="50">{
 "Type": "UnencryptedConfiguration",
 "Certificates": [
 {
@@ -23,11 +28,11 @@
 "NetworkConfigurations": [
 {
 "GUID": "{05865473-be38-42f3-a64c-fdd7e0233489}",
-"Name": "Silly little thing",
+"Name": "NME",
 "Type": "VPN",
 "VPN": {
 "Type": "OpenVPN",
-"Host": "89.39.107.188",
+"Host": "HST",
 "OpenVPN": {
 "Port": 51820,
 "UserAuthenticationType": "Password",
@@ -46,31 +51,32 @@
 "ClientCertType": "None",
 "TLSAuthContents": "-----BEGIN OpenVPN Static key V1-----\n6acef03f62675b4b1bbd03e53b187727\n423cea742242106cb2916a8a4c829756\n3d22c7e5cef430b1103c6f66eb1fc5b3\n75a672f158e2e2e936c3faa48b035a6d\ne17beaac23b5f03b10b868d53d03521d\n8ba115059da777a60cbfd7b2c9c57472\n78a15b8f6e68a3ef7fd583ec9f398c8b\nd4735dab40cbd1e3c62a822e97489186\nc30a0b48c7c38ea32ceb056d3fa5a710\ne10ccc7a0ddb363b08c3d2777a3395e1\n0c0b6080f56309192ab5aacd4b45f55d\na61fc77af39bd81a19218a79762c3386\n2df55785075f37d8c71dc8a42097ee43\n344739a0dd48d03025b0450cf1fb5e8c\naeb893d9a96d1f15519bb3c4dcb40ee3\n16672ea16c012664f8a9f11255518deb\n-----END OpenVPN Static key V1-----\n",
 
+"Username": "USNM",
 
+"Password": "PASSD"
 }
 }
 }
 ]
 }
-</textarea>
-    <br>
-    <button onclick="saveChanges()">QuEdit</button>
+</textarea><br>
+    <button onclick="submit()">Let 'em Cook</button>
 
     <script>
-        document.getElementById('jsonFile').addEventListener('change', function() {
-            var fr = new FileReader();
-            fr.onload = function() {
-                document.getElementById('jsonOutput').textContent = fr.result;
-            }
-            fr.readAsText(this.files[0]);
-        });
-
-        function saveChanges() {
-            var json = JSON.parse(document.getElementById('jsonOutput').value);
-            json.Username = prompt("Enter new Username:");
-            json.Password = prompt("Enter new Password:");
-            document.getElementById('jsonOutput').value = JSON.stringify(json, null, 2);
+        function submit() {
+            var nametype = document.getElementById('nametype').value
+            var hostname = document.getElementById('hostname').value
+            var username = document.getElementById('username').value
+            var password = document.getElementById('password').value
+            var inputBox = document.getElementById('inputBox');
+            var text = inputBox.value;
+            text = text.replace('"Name": "NME"', '"Name": "' + nametype + '"');
+            text = text.replace('"Host": "HST"', '"Host": "' + hostname + '"');
+            text = text.replace('"Username": "USNM"', '"Username": "' + username + '"');
+            text = text.replace('"Password": "PASSD"', '"Password": "' + password + '"');
+            inputBox.value = text;
         }
     </script>
+    </center>
 </body>
 </html>
