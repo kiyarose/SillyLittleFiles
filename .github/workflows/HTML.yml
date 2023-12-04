@@ -33,11 +33,14 @@ jobs:
           echo "::set-output name=review_status::COMMENT"
           echo "::set-output name=review_body::All required lines are present in the modified HTML files."
 
+    
       - name: Create review
         uses: octokit/request-action@v2.x
         with:
-          route: POST /repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews
-          event: ${{ steps.check.outputs.review_status }}
+              owner: owner,
+              repo: repo,
+              pull_number: issue_number,
+              event: 'REQUEST_CHANGES',
           body: ${{ steps.check.outputs.review_body }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
