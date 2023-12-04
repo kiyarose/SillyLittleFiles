@@ -37,7 +37,7 @@ jobs:
         uses: octokit/request-action@v2.x
         with:
           route: POST /repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews
-          review_event: ${{ steps.check.outputs.review_status }}
+          event: ${{ steps.check.outputs.review_status }}
           body: ${{ steps.check.outputs.review_body }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
