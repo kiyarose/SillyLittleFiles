@@ -2,7 +2,7 @@ name: Check Syntax
 
 on:
   pull_request:
-    types: [opened, synchronize, review_requested, review_request_removed]
+    types: [opened, synchronize, review_requested]
 
 jobs:
   check-syntax:
