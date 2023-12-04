@@ -38,19 +38,19 @@ jobs:
       - name: Check HTML syntax
         run: |
           for file in $(grep -E '\.html$' modified_files.txt); do
-            tidy -q -e $file || true
+            tidy -q -e $file || echo "$file: $(tidy -q -e $file)" >> html_errors.txt
           done
 
       - name: Check CSS syntax
         run: |
           for file in $(grep -E '\.css$' modified_files.txt); do
-            stylelint $file || true
+            stylelint $file || echo "$file: $(stylelint $file)" >> css_errors.txt
           done
 
       - name: Check ONC syntax
         run: |
           for file in $(grep -E '\.onc$' modified_files.txt); do
-            jsonlint $file || true
+            jsonlint $file || echo "$file: $(jsonlint $file)" >> onc_errors.txt
           done
 
       - name: Create review
@@ -59,8 +59,14 @@ jobs:
         run: |
           REVIEW_COMMENTS=""
           for file in $(grep -E '\.(html|css|onc)$' modified_files.txt); do
-            if ! tidy -q -e $file || ! stylelint $file || ! jsonlint $file; then
-              REVIEW_COMMENTS+="\n- $file has syntax errors."
+            if [ -f html_errors.txt ] && grep -q "$file" html_errors.txt; then
+              REVIEW_COMMENTS+="\n- $file has HTML syntax errors: $(grep "$file" html_errors.txt)"
+            fi
+            if [ -f css_errors.txt ] && grep -q "$file" css_errors.txt; then
+              REVIEW_COMMENTS+="\n- $file has CSS syntax errors: $(grep "$file" css_errors.txt)"
+            fi
+            if [ -f onc_errors.txt ] && grep -q "$file" onc_errors.txt; then
+              REVIEW_COMMENTS+="\n- $file has ONC syntax errors: $(grep "$file" onc_errors.txt)"
             fi
           done
           if [ -n "$REVIEW_COMMENTS" ]; then
