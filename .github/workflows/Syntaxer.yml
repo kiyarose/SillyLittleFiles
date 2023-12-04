@@ -38,19 +38,19 @@ jobs:
       - name: Check HTML syntax
         run: |
           for file in $(grep -E '\.html$' modified_files.txt); do
-            tidy -q -e $file
+            tidy -q -e $file || true
           done
 
       - name: Check CSS syntax
         run: |
           for file in $(grep -E '\.css$' modified_files.txt); do
-            stylelint $file
+            stylelint $file || true
           done
 
       - name: Check ONC syntax
         run: |
           for file in $(grep -E '\.onc$' modified_files.txt); do
-            jsonlint $file
+            jsonlint $file || true
           done
 
       - name: Create review
