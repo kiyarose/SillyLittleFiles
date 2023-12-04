@@ -1,17 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Product+Sans');
+@import url("https://fonts.googleapis.com/css2?family=Product+Sans");
 
 body {
-    font-family: 'Product Sans', sans-serif;
+  font-family: "Product Sans", sans-serif;
 }
 
 h1 {
-    font-family: 'Product Sans', sans-serif;
-    font-size: 2em;
-    color: #333;
+  font-family: "Product Sans", sans-serif;
+  font-size: 2em;
+  color: #333;
 }
 
 p {
-    font-family: 'Product Sans', sans-serif;
-    font-size: 1em;
-    color: #666;
+  font-family: "Product Sans", sans-serif;
+  font-size: 1em;
+  color: #666;
 }
