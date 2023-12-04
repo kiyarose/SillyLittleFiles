@@ -1,0 +1,43 @@
+name: HTML Prereq
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  check-html:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Check modified HTML files
+        id: check
+        run: |
+          echo "Checking modified HTML files..."
+          git diff --name-only HEAD^ | grep '\.html$' | while read html_file; do
+            echo "Checking $html_file"
+            missing_lines=()
+            grep -q '<link rel="stylesheet" type="text/css" href="style.css">' "$html_file" || missing_lines+=('<link rel="stylesheet" type="text/css" href="style.css">')
+            grep -q '<center>.*</center>' "$html_file" || missing_lines+=('<center> and </center> tag')
+            grep -q '<a href="/">←Back</a>' "$html_file" || missing_lines+=('<a href="/">←Back</a>')
+            grep -q '<p id="udate" style="color:lightgrey; font-style:italic;">Updated: </p>' "$html_file" || missing_lines+=('<p id="udate" style="color:lightgrey; font-style:italic;">Updated: </p>')
+            grep -q 'document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;' "$html_file" || missing_lines+=('document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;')
+            if [ ${#missing_lines[@]} -ne 0 ]; then
+              echo "::set-output name=review_status::REQUEST_CHANGES"
+              echo "::set-output name=review_body::Failing review for $html_file due to missing lines: ${missing_lines[@]}"
+              exit 0
+            fi
+          done
+          echo "::set-output name=review_status::COMMENT"
+          echo "::set-output name=review_body::All required lines are present in the modified HTML files."
+
+      - name: Create review
+        uses: octokit/request-action@v2.x
+        with:
+          route: POST /repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews
+          review_event: ${{ steps.check.outputs.review_status }}
+          body: ${{ steps.check.outputs.review_body }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
