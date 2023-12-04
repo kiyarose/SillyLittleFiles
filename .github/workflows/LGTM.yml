@@ -1,0 +1,66 @@
+name: LGTM Workflow
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check_comments:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for LGTM comment
+        id: check
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const repo = context.repo;
+
+            if (context.payload.pull_request.draft) {
+              console.log('This is a draft PR, skipping checks.');
+              return false;
+            }
+
+            const comments = await github.issues.listComments({
+              owner: repo.owner,
+              repo: repo.repo,
+              issue_number: prNumber
+            });
+
+            for (const comment of comments.data) {
+              if (comment.body.toLowerCase() === 'lgtm') {
+                await github.reactions.createForIssueComment({
+                  owner: repo.owner,
+                  repo: repo.repo,
+                  comment_id: comment.id,
+                  content: '+1',
+                });
+                return true;
+              }
+            }
+
+            return false;
+
+      - name: Approve or request changes
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const repo = context.repo;
+
+            if (steps.check.outputs.result === 'true') {
+              await github.pulls.createReview({
+                owner: repo.owner,
+                repo: repo.repo,
+                pull_number: prNumber,
+                event: 'APPROVE'
+              });
+            } else {
+              await github.pulls.createReview({
+                owner: repo.owner,
+                repo: repo.repo,
+                pull_number: prNumber,
+                event: 'REQUEST_CHANGES',
+                body: 'The check failed because no LGTM comment was found.'
+              });
+            }
