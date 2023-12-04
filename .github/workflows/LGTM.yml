@@ -15,17 +15,6 @@ jobs:
             const owner = context.repo.owner;
             const repo = context.repo.repo;
 
-            const pull_request = await github.rest.pulls.get({
-              owner: owner,
-              repo: repo,
-              pull_number: issue_number
-            });
-
-            if (pull_request.data.draft) {
-              console.log('Pull request is a draft, passing check.');
-              return;
-            }
-
             const comments = await github.rest.issues.listComments({
               issue_number: issue_number,
               owner: owner,
@@ -35,8 +24,22 @@ jobs:
             for (const comment of comments.data) {
               if (comment.body.includes('LGTM')) {
                 console.log('LGTM comment found!');
+                await github.rest.pulls.createReview({
+                  owner: owner,
+                  repo: repo,
+                  pull_number: issue_number,
+                  event: 'APPROVE',
+                  body: 'LGTM comment found, approving!'
+                });
                 return;
               }
             }
 
+            await github.rest.pulls.createReview({
+              owner: owner,
+              repo: repo,
+              pull_number: issue_number,
+              event: 'REQUEST_CHANGES',
+              body: 'No LGTM comment found, please add one.'
+            });
             throw new Error('No LGTM comment found!');
