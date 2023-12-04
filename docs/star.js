@@ -1,6 +1,9 @@
 const start = new Date().getTime();
 
-const originPosition = { x: 0, y: 0 };
+const originPosition = {
+  x: 0,
+  y: 0,
+};
 
 const last = {
   starTimestamp: start,
@@ -80,7 +83,8 @@ const determinePointQuantity = (distance) =>
 
 The following is an explanation for the "createGlow" function below:
 
-I didn't cover this in my video, but I ran into an issue where moving the mouse really quickly caused gaps in the glow effect. Kind of like this:
+I didn't cover this in my video, but I ran into an issue where moving the mouse
+really quickly caused gaps in the glow effect. Kind of like this:
 
 *   *       *       *    *      *    🖱️
 
@@ -88,11 +92,17 @@ instead of:
 
 *************************************🖱️
 
-To solve this I sort of "backfilled" some additional glow points by evenly spacing them in between the current point and the last one. I found this approach to be more visually pleasing than one glow point spanning the whole gap.
+To solve this I sort of "backfilled" some additional glow points by evenly
+spacing them in between the current point and the last one. I found this
+approach to be more visually pleasing than one glow point spanning the whole
+gap.
 
-The "quantity" of points is based on the config property "maximumGlowPointSpacing".
+The "quantity" of points is based on the config property
+"maximumGlowPointSpacing".
 
-My best explanation for why this is happening is due to the mousemove event only firing every so often. I also don't think this fix was totally necessary, but it annoyed me that it was happening so I took on the challenge of trying to fix it.
+My best explanation for why this is happening is due to the mousemove event only
+firing every so often. I also don't think this fix was totally necessary, but it
+annoyed me that it was happening so I took on the challenge of trying to fix it.
 
 -- */
 const createGlow = (last, current) => {
