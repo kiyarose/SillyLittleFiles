@@ -43,6 +43,8 @@ jobs:
             }
 
             return found;
+        env:
+          LGTM_FOUND: ${{ steps.check.outputs.result }}
 
       - name: Approve or request changes
         id: review
@@ -51,7 +53,7 @@ jobs:
           script: |
             const prNumber = context.payload.pull_request.number;
             const repo = context.repo;
-            const found = steps.check.outputs.result === 'true';
+            const found = process.env.LGTM_FOUND === 'true';
 
             if (found) {
               await github.pulls.createReview({
