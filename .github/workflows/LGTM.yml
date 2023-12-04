@@ -55,11 +55,11 @@ jobs:
             const found = process.env.LGTM_FOUND === 'true';
 
             if (found) {
-              await github.pulls.createReviewRequest({
+              await github.pulls.createReview({
                 owner: repo.owner,
                 repo: repo.repo,
                 pull_number: prNumber,
-                reviewers: ['octocat']
+                event: 'APPROVE'
               });
             } else {
               await github.pulls.requestReviewers({
