@@ -1,73 +1,30 @@
-name: LGTM Workflow
+name: PR Check
 
 on:
-  pull_request:
-    types: [opened, synchronize, reopened]
+  pull_request_target:
 
 jobs:
-  check_and_review:
+  check-comments:
     runs-on: ubuntu-latest
     steps:
-      - name: Check for LGTM comment
-        id: check
-        uses: actions/github-script@v5
-        with:
-          script: |
-            const prNumber = context.payload.pull_request.number;
-            const repo = context.repo;
-
-            if (context.payload.pull_request.draft) {
-              console.log('This is a draft PR, skipping checks.');
-              return false;
-            }
-
-            const comments = await github.issues.listComments({
-              owner: repo.owner,
-              repo: repo.repo,
-              issue_number: prNumber
-            });
-
-            let found = false;
-
-            for (const comment of comments.data) {
-              if (comment.body.toLowerCase() === 'lgtm') {
-                await github.reactions.createForIssueComment({
-                  owner: repo.owner,
-                  repo: repo.repo,
-                  comment_id: comment.id,
-                  content: '+1',
-                });
-                found = true;
-                break;
-              }
-            }
-
-            return found;
+      - name: Get PR details
+        id: pr
+        run: |
+          PR_JSON=$(gh pr view https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }} --json isDraft,comments)
+          echo "::set-output name=is_draft::$(echo $PR_JSON | jq .isDraft)"
+          echo "::set-output name=comments::$(echo $PR_JSON | jq -r .comments.nodes[].body)"
         env:
-          LGTM_FOUND: ${{ steps.check.outputs.result }}
-
-      - name: Approve or request changes
-        id: review
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const prNumber = context.payload.pull_request.number;
-            const repo = context.repo;
-            const found = process.env.LGTM_FOUND === 'true';
-
-            if (found) {
-              await github.pulls.createReview({
-                owner: repo.owner,
-                repo: repo.repo,
-                pull_number: prNumber,
-                event: 'APPROVE'
-              });
-            } else {
-              await github.pulls.requestReviewers({
-                owner: repo.owner,
-                repo: repo.repo,
-                pull_number: prNumber,
-                reviewers: ['octocat']
-              });
-            }
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check for LGTM
+        run: |
+          if [[ "${{ steps.pr.outputs.is_draft }}" == "true" ]]; then
+            echo "Draft PR: skipping"
+            exit 0
+          fi
+          if echo "${{ steps.pr.outputs.comments }}" | grep -q "LGTM"; then
+            echo "Found LGTM comment, check passes"
+            exit 0
+          else
+            echo "No LGTM comment found, check fails"
+            exit 1
+          fi
