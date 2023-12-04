@@ -1,31 +1,31 @@
-name: PR Check
-
+name: LGTM Check
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, synchronize, reopened]
 
 jobs:
   check-comments:
     runs-on: ubuntu-latest
     steps:
-      - name: Get PR details
-        id: pr
-        run: |
-          PR_JSON=$(gh pr view https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }} --json isDraft,comments)
-          echo "::set-output name=is_draft::$(echo $PR_JSON | jq .isDraft)"
-          echo "::set-output name=comments::$(echo $PR_JSON | jq -r .comments.nodes[].body)"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Check for LGTM
-        run: |
-          if [[ "${{ steps.pr.outputs.is_draft }}" == "true" ]]; then
-            echo "Draft PR: skipping"
-            exit 0
-          fi
-          if echo "${{ steps.pr.outputs.comments }}" | grep -q "LGTM"; then
-            echo "Found LGTM comment, check passes"
-            exit 0
-          else
-            echo "No LGTM comment found, check fails"
-            exit 1
-          fi
+      - name: Check for LGTM comment
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const issue_number = context.issue.number;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            const comments = await github.rest.issues.listComments({
+              issue_number: issue_number,
+              owner: owner,
+              repo: repo
+            });
+
+            for (const comment of comments.data) {
+              if (comment.body.includes('LGTM')) {
+                console.log('LGTM comment found!');
+                return;
+              }
+            }
+
+            throw new Error('No LGTM comment found!');
