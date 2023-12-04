@@ -1,36 +1,45 @@
 <!DOCTYPE html>
-<link rel="stylesheet" type="text/css" href="style.css">
 <html>
-  <center>
 <head>
-    <title>Redirect Page</title>
+    <title>Redirect</title>
     <script type="text/javascript">
+        var countdown = 3; // 3 second countdown
+        var destinationUrl;
+
+        function updateCountdown() {
+            document.getElementById('countdown').innerText = countdown;
+            if(countdown === 0) {
+                window.location.href = destinationUrl;
+            } else {
+                countdown--;
+                setTimeout(updateCountdown, 1000);
+            }
+        }
+
         window.onload = function() {
             // Parse the URL parameters
             var urlParams = new URLSearchParams(window.location.search);
-            var page = urlParams.get('page');
-
-            // Prepare the redirect URL
-            var redirectUrl;
-            if (page) {
-                redirectUrl = 'https://sillylittlefiles.web.app/' + page + '.html';
+            
+            // Check if the 'page' parameter exists
+            if(urlParams.has('page')) {
+                // Set the destination URL to the page
+                destinationUrl = 'https://sillylittlefiles.web.app/' + urlParams.get('page') + '.html';
             } else {
-                redirectUrl = 'https://sillylittlefiles.web.app';
+                // Set the destination URL to the main page
+                destinationUrl = 'https://sillylittlefiles.web.app';
             }
 
-            // Display the loading message
-            var loadingMessage = document.getElementById('loadingMessage');
-            loadingMessage.innerHTML = 'Loading...<br>Original URL: ' + window.location.href + '<br>Redirecting to: ' + redirectUrl;
+            // Display the original and destination URLs
+            document.getElementById('originalUrl').href = window.location.href;
+            document.getElementById('destinationUrl').href = destinationUrl;
 
-            // Delay the redirection by 3 seconds
-            setTimeout(function() {
-                window.location.href = redirectUrl;
-            }, 3000);
+            // Start the countdown
+            updateCountdown();
         };
     </script>
 </head>
 <body>
-    <div id="loadingMessage"></div>
+    <p>You came from: <a id="originalUrl" href="#"></a></p>
+    <p>You will be redirected to: <a id="destinationUrl" href="#"></a> in <span id="countdown"></span> seconds.</p>
 </body>
-  </center>
 </html>
