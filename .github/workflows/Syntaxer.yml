@@ -25,7 +25,15 @@ jobs:
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files \
-            | jq -r '.[].filename' > modified_files.txt
+            | jq -r '.[] | select(.status != "removed") | .filename' > modified_files.txt
+          DELETED_FILES=$(curl \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files \
+            | jq -r '.[] | select(.status == "removed") | .filename')
+          if [ -n "$DELETED_FILES" ]; then
+            echo "Noticed deleted diff" > deleted_files.txt
+          fi
 
       - name: Check HTML syntax
         run: |
@@ -55,17 +63,7 @@ jobs:
               REVIEW_COMMENTS+="\n- $file has syntax errors."
             fi
           done
-          if [ -z "$REVIEW_COMMENTS" ]; then
-            curl \
-              -X POST \
-              -H "Authorization: token $GITHUB_TOKEN" \
-              -H "Accept: application/vnd.github.v3+json" \
-              https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
-              -d '{
-                "body": "All files follow correct syntax. Good job!",
-                "event": "APPROVE"
-              }'
-          else
+          if [ -n "$REVIEW_COMMENTS" ]; then
             curl \
               -X POST \
               -H "Authorization: token $GITHUB_TOKEN" \
@@ -75,3 +73,23 @@ jobs:
                 \"body\": \"The following files have syntax errors: $REVIEW_COMMENTS\",
                 \"event\": \"REQUEST_CHANGES\"
               }"
+          elif [ -f deleted_files.txt ]; then
+            curl \
+              -X POST \
+              -H "Authorization: token $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
+              -d '{
+                "body": "Noticed deleted diff"
+              }'
+          else
+            curl \
+              -X POST \
+              -H "Authorization: token $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
+              -d '{
+                "body": "All files follow correct syntax. Good job!",
+                "event": "APPROVE"
+              }'
+          fi
