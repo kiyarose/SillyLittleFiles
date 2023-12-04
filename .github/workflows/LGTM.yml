@@ -27,6 +27,8 @@ jobs:
               issue_number: prNumber
             });
 
+            let found = false;
+
             for (const comment of comments.data) {
               if (comment.body.toLowerCase() === 'lgtm') {
                 await github.reactions.createForIssueComment({
@@ -35,11 +37,12 @@ jobs:
                   comment_id: comment.id,
                   content: '+1',
                 });
-                return true;
+                found = true;
+                break;
               }
             }
 
-            return false;
+            return found;
 
       - name: Approve or request changes
         uses: actions/github-script@v5
@@ -47,8 +50,9 @@ jobs:
           script: |
             const prNumber = context.payload.pull_request.number;
             const repo = context.repo;
+            const found = steps.check.outputs.result === 'true';
 
-            if (steps.check.outputs.result === 'true') {
+            if (found) {
               await github.pulls.createReview({
                 owner: repo.owner,
                 repo: repo.repo,
