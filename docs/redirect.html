@@ -5,6 +5,7 @@
     <script type="text/javascript">
         var countdown = 3; // 3 second countdown
         var destinationUrl;
+        var originalUrl;
 
         function updateCountdown() {
             document.getElementById('countdown').innerText = countdown;
@@ -17,6 +18,9 @@
         }
 
         window.onload = function() {
+            // Get the original URL
+            originalUrl = document.referrer;
+
             // Parse the URL parameters
             var urlParams = new URLSearchParams(window.location.search);
             
@@ -30,7 +34,7 @@
             }
 
             // Display the original and destination URLs
-            document.getElementById('originalUrl').href = window.location.href;
+            document.getElementById('originalUrl').href = originalUrl;
             document.getElementById('destinationUrl').href = destinationUrl;
 
             // Start the countdown
