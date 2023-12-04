@@ -55,18 +55,17 @@ jobs:
             const found = process.env.LGTM_FOUND === 'true';
 
             if (found) {
-              await github.pulls.createReview({
+              await github.pulls.createReviewRequest({
                 owner: repo.owner,
                 repo: repo.repo,
                 pull_number: prNumber,
-                event: 'APPROVE'
+                reviewers: ['octocat']
               });
             } else {
-              await github.pulls.createReview({
+              await github.pulls.requestReviewers({
                 owner: repo.owner,
                 repo: repo.repo,
                 pull_number: prNumber,
-                event: 'REQUEST_CHANGES',
-                body: 'The check failed because no LGTM comment was found.'
+                reviewers: ['octocat']
               });
             }
