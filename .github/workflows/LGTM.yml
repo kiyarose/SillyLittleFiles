@@ -53,17 +53,16 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const found = process.env.LGTM_FOUND === 'true';
-            const octokit = github.getOctokit(core.getInput('github-token'));
 
             if (found) {
-              await octokit.pulls.createReview({
+              await github.pulls.createReview({
                 owner: repo.owner,
                 repo: repo.repo,
                 pull_number: prNumber,
                 event: 'APPROVE'
               });
             } else {
-              await octokit.pulls.createReview({
+              await github.pulls.createReview({
                 owner: repo.owner,
                 repo: repo.repo,
                 pull_number: prNumber,
