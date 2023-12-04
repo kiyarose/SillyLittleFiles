@@ -22,8 +22,10 @@
             var loadingMessage = document.getElementById('loadingMessage');
             loadingMessage.innerHTML = 'Loading...<br>Original URL: ' + window.location.href + '<br>Redirecting to: ' + redirectUrl;
 
-            // Redirect to the new page
-            window.location.href = redirectUrl;
+            // Delay the redirection by 3 seconds
+            setTimeout(function() {
+                window.location.href = redirectUrl;
+            }, 3000);
         };
     </script>
 </head>
