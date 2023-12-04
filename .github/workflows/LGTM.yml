@@ -52,9 +52,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const context = github.context;
-            const prNumber = context.payload.pull_request.number;
-            const repo = context.repo;
             const found = process.env.LGTM_FOUND === 'true';
             const octokit = github.getOctokit(core.getInput('github-token'));
 
