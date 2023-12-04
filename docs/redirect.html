@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="style.css">
+<html>
+  <center>
+<head>
+    <title>Redirect Page</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            // Parse the URL parameters
+            var urlParams = new URLSearchParams(window.location.search);
+            var page = urlParams.get('=');
+
+            // Prepare the redirect URL
+            var redirectUrl;
+            if (page) {
+                redirectUrl = 'https://sillylittlefiles.web.app/' + page + '.html';
+            } else {
+                redirectUrl = 'https://sillylittlefiles.web.app';
+            }
+
+            // Display the loading message
+            var loadingMessage = document.getElementById('loadingMessage');
+            loadingMessage.innerHTML = 'Loading...<br>Original URL: ' + window.location.href + '<br>Redirecting to: ' + redirectUrl;
+
+            // Redirect to the new page
+            window.location.href = redirectUrl;
+        };
+    </script>
+</head>
+<body>
+    <div id="loadingMessage"></div>
+</body>
+  </center>
+</html>
