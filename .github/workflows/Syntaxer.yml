@@ -60,7 +60,7 @@ jobs:
           REVIEW_COMMENTS=""
           for file in $(grep -E '\.(html|css|onc)$' modified_files.txt); do
             if ! tidy -q -e $file || ! stylelint $file || ! jsonlint $file; then
-              REVIEW_COMMENTS+="\n- {\"path\": \"$file\", \"body\": \"$file has syntax errors.\"}"
+              REVIEW_COMMENTS+="\n- $file has syntax errors."
             fi
           done
           if [ -n "$REVIEW_COMMENTS" ]; then
@@ -70,8 +70,7 @@ jobs:
               -H "Accept: application/vnd.github.v3+json" \
               https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
               -d "{
-                \"body\": \"Some files have syntax errors.\",
-                \"comments\": [$REVIEW_COMMENTS],
+                \"body\": \"The following files have syntax errors: $REVIEW_COMMENTS\",
                 \"event\": \"REQUEST_CHANGES\"
               }"
           elif [ -f deleted_files.txt ]; then
