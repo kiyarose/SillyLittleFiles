@@ -1,0 +1,95 @@
+name: Check Syntax
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  check-syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get install -y tidy
+          npm install -g stylelint
+          npm install -g jsonlint
+
+      - name: Get modified files
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files \
+            | jq -r '.[] | select(.status != "removed") | .filename' > modified_files.txt
+          DELETED_FILES=$(curl \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files \
+            | jq -r '.[] | select(.status == "removed") | .filename')
+          if [ -n "$DELETED_FILES" ]; then
+            echo "Noticed deleted diff" > deleted_files.txt
+          fi
+
+      - name: Check HTML syntax
+        run: |
+          for file in $(grep -E '\.html$' modified_files.txt); do
+            tidy -q -e $file
+          done
+
+      - name: Check CSS syntax
+        run: |
+          for file in $(grep -E '\.css$' modified_files.txt); do
+            stylelint $file
+          done
+
+      - name: Check ONC syntax
+        run: |
+          for file in $(grep -E '\.onc$' modified_files.txt); do
+            jsonlint $file
+          done
+
+      - name: Create review
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          REVIEW_COMMENTS=""
+          for file in $(grep -E '\.(html|css|onc)$' modified_files.txt); do
+            if ! tidy -q -e $file || ! stylelint $file || ! jsonlint $file; then
+              REVIEW_COMMENTS+="\n- $file has syntax errors."
+            fi
+          done
+          if [ -n "$REVIEW_COMMENTS" ]; then
+            curl \
+              -X POST \
+              -H "Authorization: token $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
+              -d "{
+                \"body\": \"The following files have syntax errors: $REVIEW_COMMENTS\",
+                \"event\": \"REQUEST_CHANGES\"
+              }"
+          elif [ -f deleted_files.txt ]; then
+            curl \
+              -X POST \
+              -H "Authorization: token $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
+              -d '{
+                "body": "Noticed deleted diff"
+              }'
+          else
+            curl \
+              -X POST \
+              -H "Authorization: token $GITHUB_TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews \
+              -d '{
+                "body": "All files follow correct syntax. Good job!",
+                "event": "APPROVE"
+              }'
+          fi
