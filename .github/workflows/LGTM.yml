@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize, reopened]
 
 jobs:
-  check_comments:
+  check_and_review:
     runs-on: ubuntu-latest
     steps:
       - name: Check for LGTM comment
@@ -45,6 +45,7 @@ jobs:
             return found;
 
       - name: Approve or request changes
+        id: review
         uses: actions/github-script@v5
         with:
           script: |
