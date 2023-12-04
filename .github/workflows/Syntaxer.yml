@@ -17,15 +17,15 @@ jobs:
           npm install -g stylelint
           npm install -g jsonlint
 
-      - name: Check modified files
+      - name: Get modified files
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git diff --name-only origin/${{ github.base_ref }}..${{ github.head_ref }} > modified_files.txt
-          if grep -qE '\.(html|css|onc)$' modified_files.txt; then
-            echo "HTML, CSS, or ONC files have been modified."
-            exit 1
-          else
-            echo "No HTML, CSS, or ONC files have been modified."
-          fi
+          curl \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files \
+            | jq -r '.[].filename' > modified_files.txt
 
       - name: Check HTML syntax
         run: |
@@ -75,4 +75,3 @@ jobs:
                 \"body\": \"The following files have syntax errors: $REVIEW_COMMENTS\",
                 \"event\": \"REQUEST_CHANGES\"
               }"
-          fi
