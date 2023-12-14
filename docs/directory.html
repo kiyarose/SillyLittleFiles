@@ -16,7 +16,7 @@
 <script>
 document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;
 
-   function fetchCredentials() {
+   function fetchcreds() {
             var credbox = document.getElementById("credbox");
             credbox.value = ""; // Clear previous content
 
@@ -37,7 +37,7 @@ document.getElementById("udate").innerHTML = document.getElementById("udate").in
             xhr.send();
         }
 
-        function pullCredentials() {
+        function pushcreds() {
             var credname = document.getElementById("credname").value;
             var fetchbox = document.getElementById("fetchbox");
             fetchbox.value = ""; // Clear previous content
