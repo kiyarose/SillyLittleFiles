@@ -20,17 +20,27 @@ document.getElementById("udate").innerHTML = document.getElementById("udate").in
             var credbox = document.getElementById("credbox");
             credbox.value = ""; // Clear previous content
 
-            // Assuming /creds is the folder where credentials files are stored
-            var folderPath = "/creds";
+            // Assuming /creds is the folder where credential files are stored
+            var folderPath = "/creds/";
 
-            // Using XMLHttpRequest to fetch file contents
+            // Using XMLHttpRequest to fetch file contents for each file in the folder
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     var files = xhr.responseText.split("\n");
 
-                    // Displaying contents in the credbox textarea
-                    credbox.value = files.join("\n");
+                    // Iterate through each file and fetch its content
+                    files.forEach(function (file) {
+                        var fileXHR = new XMLHttpRequest();
+                        fileXHR.onreadystatechange = function () {
+                            if (fileXHR.readyState == 4 && fileXHR.status == 200) {
+                                // Append file content to the credbox textarea
+                                credbox.value += fileXHR.responseText + "\n";
+                            }
+                        };
+                        fileXHR.open("GET", folderPath + file, true);
+                        fileXHR.send();
+                    });
                 }
             };
             xhr.open("GET", folderPath, true);
@@ -54,7 +64,7 @@ document.getElementById("udate").innerHTML = document.getElementById("udate").in
             xhr.send();
         }
 
-        // Add this event listener to call fetchCredentials on page load if needed
-        document.addEventListener("DOMContentLoaded", fetchCredentials);
+        // Add this event listener to call fetchcreds on page load if needed
+        document.addEventListener("DOMContentLoaded", fetchcreds);
 </script>
 </center>
