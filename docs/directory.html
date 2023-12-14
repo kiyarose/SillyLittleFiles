@@ -1,46 +1,58 @@
-<!Some Code Generated Via https://markdowntohtml.com/>
-<!DOCTYPE=HTML>
-<link rel="stylesheet" type="text/css" href="style.css">
-<script src="star.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credential Manager</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="star.js"></script>
+</head>
+<body>
+    <center>
+        <a href="/">←Back</a><br>
+        <p>Credential Lister</p><br>
+        <button onclick="fetchcreds()">Fetch Credentials</button><br>
+        <h1>Credential Directory Viewer</h1>
+        <textarea id="credbox" rows="4" cols="50"></textarea><br>
+        <p>Credential Puller</p><br>
+        <input value="1.onc" placeholder="Onc file to view" id="credname">
+        <textarea id="fetchbox" rows="4" cols="50"></textarea><br>
+        <button onclick="pushcreds()">Pull Credentials</button>
+    </center>
 
-<center>
-<a href="/">←Back</a> <br>
-  <p>Credential Lister</p><br>
-  <button onclick="fetchcreds()">Fetch Credentials</button><br>
-  <h1>Credential Directory Viewer</h1>
-  <textarea id="credbox" rows="4" cols="50"></textarea><br>
-  <p>Credential Puller</p><br>
-  <input value="1.onc" placeholder="Onc file to view" id ="credname"></input><br>
-  <textarea id="fetchbox" rows="4" cols="50"></textarea><br>
-  <button onclick="pushcreds()">Pull Credentials</button>
-<script>
-document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetchcreds(); // Call fetchcreds on page load
+        });
 
-   function fetchcreds() {
+        function fetchcreds() {
             var credbox = document.getElementById("credbox");
             credbox.value = ""; // Clear previous content
 
             // Assuming /creds is the folder where credential files are stored
             var folderPath = "/creds/";
 
-            // Using XMLHttpRequest to fetch file contents for each file in the folder
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    var files = xhr.responseText.split("\n");
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        var files = xhr.responseText.split("\n");
 
-                    // Iterate through each file and fetch its content
-                    files.forEach(function (file) {
-                        var fileXHR = new XMLHttpRequest();
-                        fileXHR.onreadystatechange = function () {
-                            if (fileXHR.readyState == 4 && fileXHR.status == 200) {
-                                // Append file content to the credbox textarea
-                                credbox.value += fileXHR.responseText + "\n";
-                            }
-                        };
-                        fileXHR.open("GET", folderPath + file, true);
-                        fileXHR.send();
-                    });
+                        // Iterate through each file and fetch its content
+                        files.forEach(function (file) {
+                            var fileXHR = new XMLHttpRequest();
+                            fileXHR.onreadystatechange = function () {
+                                if (fileXHR.readyState == 4 && fileXHR.status == 200) {
+                                    // Append file content to the credbox textarea
+                                    credbox.value += fileXHR.responseText + "\n";
+                                }
+                            };
+                            fileXHR.open("GET", folderPath + file, true);
+                            fileXHR.send();
+                        });
+                    } else {
+                        console.error('Failed to retrieve file list. Status: ' + xhr.status);
+                    }
                 }
             };
             xhr.open("GET", folderPath, true);
@@ -52,19 +64,20 @@ document.getElementById("udate").innerHTML = document.getElementById("udate").in
             var fetchbox = document.getElementById("fetchbox");
             fetchbox.value = ""; // Clear previous content
 
-            // Using XMLHttpRequest to fetch the specified file
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    // Displaying contents in the fetchbox textarea
-                    fetchbox.value = xhr.responseText;
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        // Displaying contents in the fetchbox textarea
+                        fetchbox.value = xhr.responseText;
+                    } else {
+                        console.error('Failed to fetch credentials. Status: ' + xhr.status);
+                    }
                 }
             };
             xhr.open("GET", credname, true);
             xhr.send();
         }
-
-        // Add this event listener to call fetchcreds on page load if needed
-        document.addEventListener("DOMContentLoaded", fetchcreds);
-</script>
-</center>
+    </script>
+</body>
+</html>
