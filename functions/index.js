@@ -11,7 +11,8 @@ admin.initializeApp();
 
 const storage = admin.storage();
 // eslint-disable-next-line max-len
-const bucket = storage.bucket("sillylittlefiles.appspot.com"); // Update with your project ID
+const bucket = storage.bucket("sillylittlefiles.appspot.com"); // Update with
+your project ID
 
 app.get("/listFiles", async (req, res) => {
   try {
