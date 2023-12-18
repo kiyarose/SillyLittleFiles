@@ -15,15 +15,19 @@
     <center>
       <a href="/">←Back</a><br />
       <h1>Credential Lister</h1>
-<br>
+      <br />
       <!-- Dropdown button for the first script -->
-      <button onload="DropdownSet()" onclick="toggleDropdown('script1')">Creds Master File</button><br>
+      <button onload="DropdownSet()" onclick="toggleDropdown('script1')">
+        Creds Master File</button
+      ><br />
       <div id="script1" class="dropdown">
         <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FDamianSwanAAJHS2%2FSillyLittleFiles%2Fblob%2Fmain%2Fsources%2Fcreds.master&style=default&type=code&showLineNumbers=on&showFileMeta=on&showFullPath=on&fetchFromJsDelivr=on"></script>
       </div>
       <br />
       <!-- Dropdown button for the second script -->
-      <button onload="DropdownSet()" onclick="toggleDropdown('script2')">Onc Master File</button><br>
+      <button onload="DropdownSet()" onclick="toggleDropdown('script2')">
+        Onc Master File</button
+      ><br />
       <div id="script2" class="dropdown">
         <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FDamianSwanAAJHS2%2FSillyLittleFiles%2Fblob%2Fmain%2Fsources%2Fonc.master&style=default&type=code&showLineNumbers=on&showFileMeta=on&showFullPath=on&fetchFromJsDelivr=on"></script>
       </div>
@@ -37,9 +41,9 @@
         href="https://github.com/DamianSwanAAJHS2/SillyLittleFiles/new/main/sources"
         >Create a new credential file</a
       >
-      <br /><br>
+      <br /><br />
       <p>Modify the Master files:</p>
-      
+
       <a
         href="https://github.com/DamianSwanAAJHS2/SillyLittleFiles/edit/main/sources/creds.master"
         >Creds</a
@@ -48,7 +52,7 @@
         href="https://github.com/DamianSwanAAJHS2/SillyLittleFiles/edit/main/sources/onc.master"
         >Oncs</a
       >
-      <br /><br>
+      <br /><br />
       <p>
         Make sure to add the details to the master files after making individual
         files, you will need to make a PR for this as write permissions are not
@@ -57,20 +61,19 @@
     </center>
 
     <script>
-        var s1 = document.getElementById("script1");
-        var s2  = document.getElementById("script2");
-        s1.style.display = "none";
-        s2.style.display = "none";
-        console.log("Set visibility to none to prevent dual clicking");
+      var s1 = document.getElementById("script1");
+      var s2 = document.getElementById("script2");
+      s1.style.display = "none";
+      s2.style.display = "none";
+      console.log("Set visibility to none to prevent dual clicking");
 
       // Function to toggle the visibility of the dropdown
-      function DropdownSet(){
+      function DropdownSet() {
         var s1 = document.getElementById("script1");
-        var s2  = document.getElementById("script2");
+        var s2 = document.getElementById("script2");
         s1.style.display = "none";
         s2.style.display = "none";
         console.log("Set visibility to none to prevent dual clicking");
-
       }
       function toggleDropdown(dropdownId) {
         var dropdown = document.getElementById(dropdownId);
@@ -79,7 +82,6 @@
         } else {
           dropdown.style.display = "none";
         }
-
       }
 
       document.addEventListener("DOMContentLoaded", function () {
