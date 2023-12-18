@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <!DIR>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Credential Manager</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <style>
       .dropdown {
@@ -15,27 +14,67 @@
   <body>
     <center>
       <a href="/">←Back</a><br />
-      <p>Credential Lister</p>
-
+      <h1>Credential Lister</h1>
+      <br />
       <!-- Dropdown button for the first script -->
-      <button onclick="toggleDropdown('script1')">Toggle Script 1</button>
+      <button onload="DropdownSet()" onclick="toggleDropdown('script1')">
+        Creds Master File</button
+      ><br />
       <div id="script1" class="dropdown">
         <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FDamianSwanAAJHS2%2FSillyLittleFiles%2Fblob%2Fmain%2Fsources%2Fcreds.master&style=default&type=code&showLineNumbers=on&showFileMeta=on&showFullPath=on&fetchFromJsDelivr=on"></script>
       </div>
-
+      <br />
       <!-- Dropdown button for the second script -->
-      <button onclick="toggleDropdown('script2')">Toggle Script 2</button>
+      <button onload="DropdownSet()" onclick="toggleDropdown('script2')">
+        Onc Master File</button
+      ><br />
       <div id="script2" class="dropdown">
         <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FDamianSwanAAJHS2%2FSillyLittleFiles%2Fblob%2Fmain%2Fsources%2Fonc.master&style=default&type=code&showLineNumbers=on&showFileMeta=on&showFullPath=on&fetchFromJsDelivr=on"></script>
       </div>
+      <br />
+      <a
+        href="https://github.com/DamianSwanAAJHS2/SillyLittleFiles/tree/main/sources"
+        >Show the sources folder</a
+      >
+      <br />
+      <a
+        href="https://github.com/DamianSwanAAJHS2/SillyLittleFiles/new/main/sources"
+        >Create a new credential file</a
+      >
+      <br /><br />
+      <p>Modify the Master files:</p>
 
-      <!-- Your existing center content goes here -->
-      <!-- ... -->
-
+      <a
+        href="https://github.com/DamianSwanAAJHS2/SillyLittleFiles/edit/main/sources/creds.master"
+        >Creds</a
+      >
+      <a
+        href="https://github.com/DamianSwanAAJHS2/SillyLittleFiles/edit/main/sources/onc.master"
+        >Oncs</a
+      >
+      <br /><br />
+      <p>
+        Make sure to add the details to the master files after making individual
+        files, you will need to make a PR for this as write permissions are not
+        granted by default on main
+      </p>
     </center>
 
     <script>
+      var s1 = document.getElementById("script1");
+      var s2 = document.getElementById("script2");
+      s1.style.display = "none";
+      s2.style.display = "none";
+      console.log("Set visibility to none to prevent dual clicking");
+
       // Function to toggle the visibility of the dropdown
+      function DropdownSet() {
+        var s1 = document.getElementById("script1");
+        var s2 = document.getElementById("script2");
+        s1.style.display = "none";
+        s2.style.display = "none";
+        console.log("Set visibility to none to prevent dual clicking");
+      }
       function toggleDropdown(dropdownId) {
         var dropdown = document.getElementById(dropdownId);
         if (dropdown.style.display === "none") {
