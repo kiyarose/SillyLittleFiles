@@ -1,82 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Credential Manager</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="star.js"></script>
+    <style>
+      .dropdown {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <center>
       <a href="/">←Back</a><br />
       <p>Credential Lister</p>
-      <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FDamianSwanAAJHS2%2FSillyLittleFiles%2Fblob%2Fmain%2Fsources%2Fcreds.master&style=default&type=code&showLineNumbers=on&showFileMeta=on&showFullPath=on&fetchFromJsDelivr=on"></script>
-      <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FDamianSwanAAJHS2%2FSillyLittleFiles%2Fblob%2Fmain%2Fsources%2Fonc.master&style=default&type=code&showLineNumbers=on&showFileMeta=on&showFullPath=on&fetchFromJsDelivr=on"></script>
+
+      <!-- Dropdown button for the first script -->
+      <button onclick="toggleDropdown('script1')">Toggle Script 1</button>
+      <div id="script1" class="dropdown">
+        <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FDamianSwanAAJHS2%2FSillyLittleFiles%2Fblob%2Fmain%2Fsources%2Fcreds.master&style=default&type=code&showLineNumbers=on&showFileMeta=on&showFullPath=on&fetchFromJsDelivr=on"></script>
+      </div>
+
+      <!-- Dropdown button for the second script -->
+      <button onclick="toggleDropdown('script2')">Toggle Script 2</button>
+      <div id="script2" class="dropdown">
+        <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FDamianSwanAAJHS2%2FSillyLittleFiles%2Fblob%2Fmain%2Fsources%2Fonc.master&style=default&type=code&showLineNumbers=on&showFileMeta=on&showFullPath=on&fetchFromJsDelivr=on"></script>
+      </div>
+
+      <!-- Your existing center content goes here -->
+      <!-- ... -->
+
     </center>
 
     <script>
+      // Function to toggle the visibility of the dropdown
+      function toggleDropdown(dropdownId) {
+        var dropdown = document.getElementById(dropdownId);
+        if (dropdown.style.display === "none") {
+          dropdown.style.display = "block";
+        } else {
+          dropdown.style.display = "none";
+        }
+      }
+
       document.addEventListener("DOMContentLoaded", function () {
         fetchcreds(); // Call fetchcreds on page load
       });
 
-      function fetchcreds() {
-        var credbox = document.getElementById("credbox");
-        credbox.value = ""; // Clear previous content
-
-        // Assuming /creds is the folder where credential files are stored
-        var folderPath = "/creds/";
-
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-              var files = xhr.responseText.split("\n");
-
-              // Iterate through each file and fetch its content
-              files.forEach(function (file) {
-                var fileXHR = new XMLHttpRequest();
-                fileXHR.onreadystatechange = function () {
-                  if (fileXHR.readyState == 4 && fileXHR.status == 200) {
-                    // Append file content to the credbox textarea
-                    credbox.value += fileXHR.responseText + "\n";
-                  }
-                };
-                fileXHR.open("GET", folderPath + file, true);
-                fileXHR.send();
-              });
-            } else {
-              console.error(
-                "Failed to retrieve file list. Status: " + xhr.status,
-              );
-            }
-          }
-        };
-        xhr.open("GET", folderPath, true);
-        xhr.send();
-      }
-
-      function pushcreds() {
-        var credname = document.getElementById("credname").value;
-        var fetchbox = document.getElementById("fetchbox");
-        fetchbox.value = ""; // Clear previous content
-
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-              // Displaying contents in the fetchbox textarea
-              fetchbox.value = xhr.responseText;
-            } else {
-              console.error(
-                "Failed to fetch credentials. Status: " + xhr.status,
-              );
-            }
-          }
-        };
-        xhr.open("GET", credname, true);
-        xhr.send();
-      }
+      // Your existing functions go here
+      // ...
     </script>
   </body>
 </html>
