@@ -15,7 +15,7 @@
 "NetworkConfigurations": [
 {
 "GUID": "{05865473-be38-42f3-a64c-fdd7e0233489}",
-"Name": "Silly Little Clone",
+"Name": "Silly Little Apples",
 "Type": "VPN",
 "VPN": {
 "Type": "OpenVPN",
