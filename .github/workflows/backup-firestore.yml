@@ -1,0 +1,26 @@
+name: Backup to Cloud Firestore
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Backup files to Cloud Firestore
+        run: |
+              firebase firestore:import --collection=files --data=/source/ --project=${{ secrets.FIREBASE_PROJECT_ID }}
