@@ -76,23 +76,10 @@
         }
 
         .explosion-button {
-            animation: none; /* Remove the animation property */
-        }
-
-        .explosion-button.clicked {
-            animation: explosion 0.5s linear; /* Add the animation property on click */
+            animation: explosion 0.5s linear;
         }
     </style>
-    <script>
-        function submit() {
-            var button = document.querySelector('.explosion-button');
-            button.classList.add('clicked');
-            setTimeout(function() {
-                button.classList.remove('clicked');
-            }, 500);
-        }
-    </script>
-    <button onclick="download()" id="downloadButton" onclick="playAnimation()">Download</button>
+    <button onclick="download()" id="downloadButton">Download</button>
 
     <style>
         @keyframes blink {
@@ -108,23 +95,10 @@
         }
 
         .blink-animation {
-            animation: none; /* Remove the animation property */
-        }
-
-        .blink-animation.clicked {
-            animation: blink 3s linear; /* Add the animation property on click */
+            animation: blink 3s linear;
         }
     </style>
 
-    <script>
-        function playAnimation() {
-            var button = document.getElementById("downloadButton");
-            button.classList.add("clicked");
-            setTimeout(function() {
-                button.classList.remove("clicked");
-            }, 3000);
-        }
-    </script>
     <script>
         function download() {
             var button = document.getElementById("downloadButton");
