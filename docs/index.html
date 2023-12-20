@@ -4,40 +4,65 @@
 <style>
 .red-border {
   border: 2px solid red;
+  opacity: 0; /* Set initial opacity to 0 */
+  animation: fade-in 1s ease-in forwards; /* Apply fade-in animation */
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0; /* Start with opacity 0 */
+  }
+  to {
+    opacity: 1; /* End with opacity 1 */
+  }
 }
 </style>
 
 <div class="red-border">
-<center><h3 id="ip"></h3>
-<h3 id="region"></h3>
-</center>
+    <center>
+        <h3 id="ip">Fetching...</h3>
+        <h3 id="region">Fetching...</h3>
+    </center>
 </div>
 <script>
 fetch('https://api.ipify.org?format=json')
 .then(results => results.json())
 .then(data => {
-    document.getElementById("ip").innerHTML = "Hello " + data.ip;
+    document.getElementById("ip").innerHTML = "👋 Hello " + data.ip;
     return fetch(`https://ipapi.co/${data.ip}/json/`);
 })
 .then(response => response.json())
 .then(data => {
-    document.getElementById("region").innerHTML = "From " + data.region;
+    document.getElementById("region").innerHTML = "🌍 From " + data.region;
     document.getElementById("region").title = data.country_name
     document.getElementById("ip").title = data.org
 });
 </script>
 <center>
-<a href="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/overview/main"><img src="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/badge/main" alt="CodeFactor" /></a><a href="https://app.deepsource.com/gh/DamianSwanAAJHS2/SillyLittleFiles/" target="_blank"><img alt="DeepSource" title="DeepSource" src="https://app.deepsource.com/gh/DamianSwanAAJHS2/SillyLittleFiles.svg/?label=active+issues&show_trend=false&token=TNRs88MO0hVNrxbnPGqcgvvb"/></a>
+<a href="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/overview/main">
+    <img src="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/badge/main" alt="CodeFactor" />
+</a>
+<a href="https://app.deepsource.com/gh/DamianSwanAAJHS2/SillyLittleFiles/" target="_blank">
+    <img alt="DeepSource" title="DeepSource" src="https://app.deepsource.com/gh/DamianSwanAAJHS2/SillyLittleFiles.svg/?label=active+issues&show_trend=false&token=TNRs88MO0hVNrxbnPGqcgvvb"/>
+</a>
 <br>
 <a href="#" font-style:italic;" onclick="copyToClipboard('https://sillyfiles.page.link/G')">Copy Shareable Link</a>
 <h1>SLF Protocol Setup</h1><br>
-<h3 style='font-family=arial'> See <a href='/1.html' style='font-family=arial'>#1</a> for a premade (albeit slow and unstable) file!<br> </h3>
-<h3 style='font-family=arial'> See <a href='/11.html' style='font-family=arial'>#11</a> for a tutorial on how to make files, although this requires some level of critical thinking. </h3>
-<br><h3><a href='/filecreator.html'>File Creator</a></h3>
+<h3 style='font-family:arial'>
+    See <a href='/1.html' style='font-family:arial'>#1</a> for a premade (albeit slow and unstable) file!<br>
+</h3>
+<h3 style='font-family:Arial'>
+    See <a href='/11.html' style='font-family:arial'>#11</a> for a tutorial on how to make files, although this requires some level of critical thinking.
+</h3>
+<br>
+<h3><a href='/filecreator.html'>File Creator</a></h3>
 <h3><a href='/directory.html'>Credential Directory</a></h3><br>
-<p style='font-family=arial'>Onc File Breakdown:</p> <a style='font-family=arial' href='https://github.com/DamianSwanAAJHS2/SillyLittleFiles/blob/source/silly.onc'>https://chromium.googlesource.com/chromium/src/+/main/components/onc/docs/onc_spec.md</a>
-<br><p id="udate" style="color:lightgrey; font-style:italic;">Updated: </p>
-
+<p style='font-family:arial'>Onc File Breakdown:</p>
+<a style='font-family:arial' href='https://github.com/DamianSwanAAJHS2/SillyLittleFiles/blob/source/silly.onc'>
+    https://chromium.googlesource.com/chromium/src/+/main/components/onc/docs/onc_spec.md
+</a>
+<br>
+<p id="udate" style="color:lightgrey; font-style:italic;">Updated: </p>
 <script>
 document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;
 
