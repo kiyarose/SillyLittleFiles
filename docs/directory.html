@@ -9,6 +9,22 @@
     <style>
       .dropdown {
         display: none;
+        animation: magicLamp 1s ease-in-out;
+      }
+
+      @keyframes magicLamp {
+        0% {
+          opacity: 0;
+          transform: scale(0);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.2);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
       }
     </style>
   </head>
