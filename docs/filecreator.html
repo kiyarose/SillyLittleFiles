@@ -62,8 +62,52 @@
 ]
 }
 </textarea><br>
-    <button onclick="submit()">Let 'em Cook</button>
-    <button onclick="download()">Download</button>
+    <button onclick="submit()" class="explosion-button">Let 'em Cook</button>
+    <style>
+        @keyframes explosion {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(5);
+                opacity: 0;
+            }
+        }
+
+        .explosion-button {
+            animation: explosion 0.5s linear;
+        }
+    </style>
+    <button onclick="download()" id="downloadButton">Download</button>
+
+    <style>
+        @keyframes blink {
+            0% {
+                background-color: green;
+            }
+            50% {
+                background-color: transparent;
+            }
+            100% {
+                background-color: green;
+            }
+        }
+
+        .blink-animation {
+            animation: blink 3s linear;
+        }
+    </style>
+
+    <script>
+        function download() {
+            var button = document.getElementById("downloadButton");
+            button.classList.add("blink-animation");
+            setTimeout(function() {
+                button.classList.remove("blink-animation");
+            }, 3000);
+        }
+    </script>
     <button id="submitbutton" onclick="reload()" style="display: none">New Project</button>
     <script>
         function submit() {
