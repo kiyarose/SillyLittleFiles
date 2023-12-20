@@ -1,4 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Product+Sans");
+/* FILEPATH: /workspaces/SillyLittleFiles/docs/style.css */
+/* BEGIN: be15d9bcejpp */
+body,
+h1,
+p,
+.glow-point,
+.star {
+  animation: fade-in 1s ease-in forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* END: be15d9bcejpp */
 
 body {
   font-family: "Product Sans", sans-serif;
