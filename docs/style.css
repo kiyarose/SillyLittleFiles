@@ -2,18 +2,21 @@
 
 body {
   font-family: "Product Sans", sans-serif;
+  animation: fade-in 1s ease-in forwards; /* Apply fade-in animation */
 }
 
 h1 {
   font-family: "Product Sans", sans-serif;
   font-size: 2em;
   color: #333;
+  animation: fade-in 1s ease-in forwards; /* Apply fade-in animation */
 }
 
 p {
   font-family: "Product Sans", sans-serif;
   font-size: 1em;
   color: #666;
+  animation: fade-in 1s ease-in forwards; /* Apply fade-in animation */
 }
 :root {
   --glow-rgb: 239 42 201;
@@ -29,6 +32,7 @@ p {
   position: absolute;
   box-shadow: 0rem 0rem 1.2rem 0.6rem rgb(var(--glow-rgb));
   pointer-events: none;
+  animation: fade-in 1s ease-in forwards; /* Apply fade-in animation */
 }
 
 .star {
@@ -94,5 +98,13 @@ p {
     transform: translate(20px, 120px) rotateX(-180deg) rotateY(-90deg)
       scale(0.5);
     opacity: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0; /* Start with opacity 0 */
+  }
+  to {
+    opacity: 1; /* End with opacity 1 */
   }
 }
