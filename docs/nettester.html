@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Website Blocker Tester</h1>
+  <input type="text" id="urlInput" placeholder="Enter a website URL">
+  <button id="testButton">Test Website</button>
+  <div id="result"></div>
+
+<iframe src="https://www.verizon.com/speedtest/newdesignR.html?flow=seofiosdigital">
+<iframe src="https://networktest.twilio.com/">
+  
+</body>
+</html>
+<style>
+  /* Basic styling for the page elements */
+body {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+</style>
+<script>
+  const urlInput = document.getElementById("urlInput");
+const testButton = document.getElementById("testButton");
+const resultDiv = document.getElementById("result");
+
+testButton.addEventListener("click", async () => {
+  const url = urlInput.value;
+  try {
+    const response = await fetch(url);
+
+    if (response.ok) {
+      resultDiv.textContent = `${url} is accessible!`;
+    } else {
+      resultDiv.textContent = `${url} might be blocked (Status: ${response.status})`;
+    }
+  } catch (error) {
+    resultDiv.textContent = `Error checking ${url}: ${error.message}`;
+  }
+});
+
+</script>
