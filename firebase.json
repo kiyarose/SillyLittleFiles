@@ -1,18 +1,17 @@
 {
-  "hosting": [ {
-      "target": "sillylittlefiles",  
-      "public": "docs",  
+  "hosting": [
+    {
+      "target": "sillylittlefiles",
+      "public": "docs",
       "ignore": [
         "firebase.json",
         "**/.*",
         "**/node_modules/**"
       ]
-
     },
     {
-      "target": "altoonocam", 
+      "target": "altoonocam",
       "public": "cams"
-
     }
   ]
 }
