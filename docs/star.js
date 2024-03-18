@@ -38,7 +38,7 @@ const calcDistance = (a, b) => {
   return Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
 };
 
-const calcElapsedTime = (start, end) => end - start;
+const calcElapsedTime = ( end) => end - start;
 
 const appendElement = (element) => document.body.appendChild(element);
 const removeElement = (element, delay) =>
@@ -79,7 +79,7 @@ const createGlowPoint = (position) => {
 const determinePointQuantity = (distance) =>
   Math.max(Math.floor(distance / config.maximumGlowPointSpacing), 1);
 
-const createGlow = (current) => {
+const createGlow = (last, current) => {
   const distance = calcDistance(last, current);
   const quantity = determinePointQuantity(distance);
 
