@@ -38,7 +38,7 @@ const calcDistance = (a, b) => {
   return Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
 };
 
-const calcElapsedTime = ( end) => end - start;
+const calcElapsedTime = (end) => end - start;
 
 const appendElement = (element) => document.body.appendChild(element);
 const removeElement = (element, delay) =>
