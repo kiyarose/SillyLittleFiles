@@ -79,7 +79,7 @@ const createGlowPoint = (position) => {
 const determinePointQuantity = (distance) =>
   Math.max(Math.floor(distance / config.maximumGlowPointSpacing), 1);
 
-const createGlow = (last, current) => {
+const createGlow = (current) => {
   const distance = calcDistance(last, current);
   const quantity = determinePointQuantity(distance);
 
