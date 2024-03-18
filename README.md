@@ -2,7 +2,6 @@
 
 <center>
 
-
 ### See [#1](https://github.com/DamianSwanAAJHS2/SillyLittleFiles/discussions/1) for how to import files!<br>
 
 ### See [#11](https://github.com/DamianSwanAAJHS2/SillyLittleFiles/discussions/11) for a tutorial on how to make files, although this requires some level of critical thinking.
