@@ -4,24 +4,23 @@
 # For more information, see:
 # https://github.com/actions/stale
 name: Clean Stale Requests
-
-on:
-  schedule:
+on: schedule:
   - cron: '30 12 * * *'
-
 jobs:
   stale:
-
     runs-on: ubuntu-latest
     permissions:
       issues: write
       pull-requests: write
-
     steps:
-    - uses: actions/stale@v5
-      with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        stale-issue-message: 'Stale issue message'
-        stale-pr-message: 'Stale pull request message'
+      - uses: actions/stale@v5
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          stale-issue-message: 'Issue is stale, Will close soon.'
+          stale-pr-message: 'PR is stale, will close soon'
+          stale-issue-label: 'no-issue-activity'
+          stale-pr-label: 'no-pr-activity'
+          close-issue-reason: 'wontfix'  # This closes the issue with "won't fix" reason
+
         stale-issue-label: 'no-issue-activity'
         stale-pr-label: 'no-pr-activity'
