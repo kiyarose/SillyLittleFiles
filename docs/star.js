@@ -52,7 +52,6 @@ const appendElement = (element) => document.body.appendChild(element);
 const removeElement = (element, delay) =>
   setTimeout(() => document.body.removeChild(element), delay);
 
-
 // Create the star object
 const createStar = (position) => {
   const star = document.createElement("span");
@@ -72,7 +71,6 @@ const createStar = (position) => {
 
   removeElement(star, config.starAnimationDuration);
 };
-
 
 // Create the glow point at pos
 const createGlowPoint = (position) => {
@@ -132,7 +130,7 @@ const handleOnMove = (e) => {
     config.minimumDistanceBetweenStars;
   const hasBeenLongEnough =
     calcElapsedTime(last.starTimestamp, now) > config.minimumTimeBetweenStars;
-// Check if the mouse has moved enough to create the obj
+  // Check if the mouse has moved enough to create the obj
   if (hasMovedFarEnough || hasBeenLongEnough) {
     createStar(mousePosition);
 
