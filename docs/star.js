@@ -27,7 +27,7 @@ let count = 0;
 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 // Set a random number from the list and create an array with this, rounded
 const selectRandom = (items) => items[rand(0, items.length - 1)];
-//Set the value and unit to animate
+// Set the value and unit to animate
 const withUnit = (value, unit) => `${value}${unit}`;
 // Set the Pixel count to the value
 const px = (value) => withUnit(value, "px");
