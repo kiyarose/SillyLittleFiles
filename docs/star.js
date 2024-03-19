@@ -23,14 +23,18 @@ const config = {
 };
 
 let count = 0;
-
+// Get a sudo random number and choose direction
 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
+// Set a random number from the list and create an array with this, rounded
 const selectRandom = (items) => items[rand(0, items.length - 1)];
-
+//Set the value and unit to animate
 const withUnit = (value, unit) => `${value}${unit}`;
+// Set the Pixel count to the value
 const px = (value) => withUnit(value, "px");
+// Set the movement scale
 const ms = (value) => withUnit(value, "ms");
 
+// Find the calculated distance from mouse and object
 const calcDistance = (a, b) => {
   const diffX = b.x - a.x;
   const diffY = b.y - a.y;
@@ -38,12 +42,18 @@ const calcDistance = (a, b) => {
   return Math.sqrt(Math.pow(diffX, 2) + Math.pow(diffY, 2));
 };
 
+// Calculate the elapsed time from object create
 const calcElapsedTime = (end) => end - start;
 
+// Append elements together and link them
 const appendElement = (element) => document.body.appendChild(element);
+
+// Remove elements after decay
 const removeElement = (element, delay) =>
   setTimeout(() => document.body.removeChild(element), delay);
 
+
+// Create the star object
 const createStar = (position) => {
   const star = document.createElement("span");
   const color = selectRandom(config.colors);
@@ -63,6 +73,8 @@ const createStar = (position) => {
   removeElement(star, config.starAnimationDuration);
 };
 
+
+// Create the glow point at pos
 const createGlowPoint = (position) => {
   const glow = document.createElement("div");
 
@@ -76,6 +88,7 @@ const createGlowPoint = (position) => {
   removeElement(glow, config.glowDuration);
 };
 
+// Random config for glow point quantity
 const determinePointQuantity = (distance) =>
   Math.max(Math.floor(distance / config.maximumGlowPointSpacing), 1);
 
@@ -107,7 +120,7 @@ const adjustLastMousePosition = (position) => {
     last.mousePosition = position;
   }
 };
-
+// How the obj should react on move
 const handleOnMove = (e) => {
   const mousePosition = { x: e.clientX, y: e.clientY };
 
@@ -119,15 +132,15 @@ const handleOnMove = (e) => {
     config.minimumDistanceBetweenStars;
   const hasBeenLongEnough =
     calcElapsedTime(last.starTimestamp, now) > config.minimumTimeBetweenStars;
-
+// Check if the mouse has moved enough to create the obj
   if (hasMovedFarEnough || hasBeenLongEnough) {
     createStar(mousePosition);
 
     updateLastStar(mousePosition);
   }
-
+  // Create a glow at last mouse pos
   createGlow(last.mousePosition, mousePosition);
-
+  // Find the mouse an update the pos data
   updateLastMousePosition(mousePosition);
 };
 
