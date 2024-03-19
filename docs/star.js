@@ -1,25 +1,25 @@
 const start = new Date().getTime();
 
 const originPosition = {
-  x: 0,
-  y: 0,
+  x : 0,
+  y : 0,
 };
 
 const last = {
-  starTimestamp: start,
-  starPosition: originPosition,
-  mousePosition: originPosition,
+  starTimestamp : start,
+  starPosition : originPosition,
+  mousePosition : originPosition,
 };
 
 const config = {
-  starAnimationDuration: 1500,
-  minimumTimeBetweenStars: 250,
-  minimumDistanceBetweenStars: 75,
-  glowDuration: 0,
-  maximumGlowPointSpacing: 10,
-  colors: ["81 187 147", "81 187 147"],
-  sizes: ["1.4rem", "1rem", "0.6rem"],
-  animations: ["fall-1", "fall-2", "fall-3"],
+  starAnimationDuration : 1500,
+  minimumTimeBetweenStars : 250,
+  minimumDistanceBetweenStars : 75,
+  glowDuration : 0,
+  maximumGlowPointSpacing : 10,
+  colors : [ "81 187 147", "81 187 147" ],
+  sizes : [ "1.4rem", "1rem", "0.6rem" ],
+  animations : [ "fall-1", "fall-2", "fall-3" ],
 };
 
 let count = 0;
@@ -27,7 +27,7 @@ let count = 0;
 const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 // Set a random number from the list and create an array with this, rounded
 const selectRandom = (items) => items[rand(0, items.length - 1)];
-//Set the value and unit to animate
+// Set the value and unit to animate
 const withUnit = (value, unit) => `${value}${unit}`;
 // Set the Pixel count to the value
 const px = (value) => withUnit(value, "px");
@@ -50,7 +50,7 @@ const appendElement = (element) => document.body.appendChild(element);
 
 // Remove elements after decay
 const removeElement = (element, delay) =>
-  setTimeout(() => document.body.removeChild(element), delay);
+    setTimeout(() => document.body.removeChild(element), delay);
 
 // Create the star object
 const createStar = (position) => {
@@ -88,7 +88,7 @@ const createGlowPoint = (position) => {
 
 // Random config for glow point quantity
 const determinePointQuantity = (distance) =>
-  Math.max(Math.floor(distance / config.maximumGlowPointSpacing), 1);
+    Math.max(Math.floor(distance / config.maximumGlowPointSpacing), 1);
 
 const createGlow = (last, current) => {
   const distance = calcDistance(last, current);
@@ -101,7 +101,7 @@ const createGlow = (last, current) => {
     const x = last.x + dx * index;
     const y = last.y + dy * index;
 
-    createGlowPoint({ x, y });
+    createGlowPoint({x, y});
   });
 };
 
@@ -120,16 +120,15 @@ const adjustLastMousePosition = (position) => {
 };
 // How the obj should react on move
 const handleOnMove = (e) => {
-  const mousePosition = { x: e.clientX, y: e.clientY };
+  const mousePosition = {x : e.clientX, y : e.clientY};
 
   adjustLastMousePosition(mousePosition);
 
   const now = new Date().getTime();
-  const hasMovedFarEnough =
-    calcDistance(last.starPosition, mousePosition) >=
-    config.minimumDistanceBetweenStars;
+  const hasMovedFarEnough = calcDistance(last.starPosition, mousePosition) >=
+                            config.minimumDistanceBetweenStars;
   const hasBeenLongEnough =
-    calcElapsedTime(last.starTimestamp, now) > config.minimumTimeBetweenStars;
+      calcElapsedTime(last.starTimestamp, now) > config.minimumTimeBetweenStars;
   // Check if the mouse has moved enough to create the obj
   if (hasMovedFarEnough || hasBeenLongEnough) {
     createStar(mousePosition);
