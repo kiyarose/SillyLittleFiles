@@ -1,0 +1,26 @@
+name: Label Restyle PRs
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Label Restyle PR
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const title = context.payload.pull_request.title;
+            const prNumber = context.payload.pull_request.number;
+            const repo = context.payload.repository.name;
+            const owner = context.payload.repository.owner.login;
+            if (title.startsWith('Restyle')) {
+              github.rest.issues.addLabels({
+                owner,
+                repo,
+                issue_number: prNumber,
+                labels: ['restyle-pr']
+              });
+            }
