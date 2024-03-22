@@ -1,5 +1,17 @@
 <!DOCTYPE =HTML>
-<head><a href="/" style="position: fixed; top: 10px; left: 10px;">←Back</a></head>
+<head>
+  <a href="/" style="position: fixed; top: 10px; left: 10px; display: none;" id="backLink">←Back</a>
+</head>
+<script>
+  window.addEventListener('scroll', function() {
+          var backLink = document.getElementById('backLink');
+          if (window.scrollY === 0) {
+                  backLink.style.display = 'none';
+          } else {
+                  backLink.style.display = 'block';
+          }
+  });
+</script>
 <link rel="stylesheet" type="text/css" href="style.css" />
 <script src="star.js"></script>
 <center>
