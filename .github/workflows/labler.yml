@@ -16,27 +16,29 @@ jobs:
     steps:
       - name: Check issue or PR title
         id: check-title
-        run: echo "Issue or PR title is ${{ github.event.issue.title }}"
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: echo "Issue or PR title is $ISSUE_TITLE"
 
       - name: Add labels based on title
         id: add-labels
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          title_lowercase="${{ github.event.issue.title | lower }}"
+          title_lowercase="$(echo "$ISSUE_TITLE" | tr '[:upper:]' '[:lower:]')"
+          echo "Issue or PR title is $title_lowercase"
           if [[ "$title_lowercase" == *"bug"* ]]; then
-            echo "Adding 'bug' label"
-            # Use GitHub API to add 'bug' label to the issue or PR
+            gh issue label "$ISSUE_TITLE" --add bug
           fi
           if [[ "$title_lowercase" == *"dependencies"* ]]; then
-            echo "Adding 'dependencies' label"
-            # Use GitHub API to add 'dependencies' label to the issue or PR
+            gh issue label "$ISSUE_TITLE" --add dependencies
           fi
           if [[ "$title_lowercase" == *"documentation"* ]]; then
-            echo "Adding 'documentation' label"
-            # Use GitHub API to add 'documentation' label to the issue or PR
+            gh issue label "$ISSUE_TITLE" --add documentation
           fi
           if [[ "$title_lowercase" == *"enhancement"* ]]; then
-            echo "Adding 'enhancement' label"
-            # Use GitHub API to add 'enhancement' label to the issue or PR
+            gh issue label "$ISSUE_TITLE" --add enhancement
           fi
 
       - name: Comment on the issue or PR
