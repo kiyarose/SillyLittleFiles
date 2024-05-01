@@ -2,7 +2,7 @@ name: Deploy to Preview Channel
 
 on:
   pull_request:
-    branches: [ !dependabot/** ]  # Exclude Dependabot branches
+#    branches: [ !dependabot/** ]
 
 jobs:
   build_and_preview:
