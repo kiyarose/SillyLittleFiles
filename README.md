@@ -25,6 +25,7 @@ Onc File Breakdown: <a href='https://github.com/DamianSwanAAJHS2/SillyLittleFile
 <a href="https://sonarcloud.io/summary/new_code?id=DamianSwanAAJHS2_SillyLittleFiles" target="_blank">
     <img alt="SonarQuality" title="Sonarcloud" src="https://sonarcloud.io/api/project_badges/measure?project=DamianSwanAAJHS2_SillyLittleFiles&metric=alert_status"/>
     </a>
+    <br>
 <a href="https://sonarcloud.io" target="_blank">
     <img title="SonarCloud" alt="SonarCloudLOGO" src="https://sonarcloud.io/images/project_badges/sonarcloud-black.svg"/>
 </a>
