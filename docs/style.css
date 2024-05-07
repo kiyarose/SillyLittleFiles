@@ -27,6 +27,7 @@ p,
 body {
   font-family: "Product Sans", sans-serif;
   animation: fade-in 1s ease-in forwards; /* Apply fade-in animation */
+  text-align: center;
 }
 
 h1 {
