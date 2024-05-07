@@ -47,7 +47,6 @@ body {
 h1 {
   font-family: "Product Sans", sans-serif;
   font-size: 2em;
-  color: #333;
   animation: fade-in 1s ease-in forwards; /* Apply fade-in animation */
 }
 
