@@ -148,6 +148,9 @@ p {
     opacity: 1; /* End with opacity 1 */
   }
 }
+a {
+  color: #A0D6E8;
+}
 a:hover {
   color: green; /* Change the color to your desired color */
   transition: color 0.5s; /* Add a transition to make it fade into the color */
