@@ -2,13 +2,22 @@
 <!DOCTYPE=HTML>
 <link rel="stylesheet" type="text/css" href="/style.css">
 <script src="/star.js"></script>
-
+<style>
+          .centre {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ensures full viewport height */
+            margin-top: 50px; /* Adjust margin as needed */
+            font-size: 29;
+</style>
+<body class="centre">
 <center>
 <a href="/">←Back</a><br>
 <a href="filecreator.html">File Creator</a><br>
 <a href="/directory/">Directory</a><br>
 <a href="editjsn.html">Edit JSON</a><br>
-
+</body>
 <script>
 document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;
 </script>
