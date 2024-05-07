@@ -1,3 +1,4 @@
+
 <?php
 
 // Error/message handling
@@ -78,9 +79,15 @@ if (isset($_FILES['json_file'])) {
     </form>
     <?php if (isset($editedData)): ?>
       <h3>Edited Data (Downloadable):</h3>
-      <pre><?php echo $editedData; ?></pre>
-      <a href="data:application/json;charset=utf-8,<?php echo urlencode($editedData); ?>" download="<?php echo $fileName; ?>">Download Edited File</a>
-    <?php endif; ?>
+      <pre><?php echo $fileContent; ?></pre>
+
+      <a href="data:application/json;charset=utf-8,<?php echo urlencode($editedData); ?>" download="<?php
+        // Sanitize filename before download
+        $sanitizedName = preg_replace('/[^a-zA-Z0-9._-]/', '', $fileName);
+        echo $sanitizedName;
+      ?>">Download Edited File</a>
+
+      <?php endif; ?>
   <?php endif; ?>
 </body>
 </html>
