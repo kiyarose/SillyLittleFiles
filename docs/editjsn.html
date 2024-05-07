@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<!Some Code Generated Via https://markdowntohtml.com/>
+<!DOCTYPE=HTML>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="star.js"></script>
+
+<center>
+<a href="/">←Back</a>
+
+<body>
+    <h1>JSON Editor</h1>
+    <textarea id="jsonInput" rows="20" style="width: 80%;"></textarea>
+    <br>
+    <button onclick="beautifyJSON()">Beautify</button>
+    <button onclick="validateJSON()">Validate</button>
+    <button onclick="downloadJSON()">Download</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<script>
+function beautifyJSON() {
+  const jsonText = document.getElementById("jsonInput").value;
+  try {
+    const jsonData = JSON.parse(jsonText);
+    const formattedJson = JSON.stringify(jsonData, null, 2);
+    document.getElementById("output").textContent = formattedJson;
+  } catch (error) {
+    document.getElementById("output").textContent = "Error: Invalid JSON";
+  }
+}
+
+function validateJSON() {
+  const jsonText = document.getElementById("jsonInput").value;
+  try {
+    JSON.parse(jsonText);
+    document.getElementById("output").textContent = "Valid JSON";
+  } catch (error) {
+    document.getElementById("output").textContent = "Error: Invalid JSON";
+  }
+}
+
+function downloadJSON() {
+  const jsonText = document.getElementById("jsonInput").value;
+  const filename = "out.json";
+  const blob = new Blob([jsonText], { type: "application/json" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+  link.click();
+}
+
+</script>
+<script>
+document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;
+</script>
+</center>
+<pre id="output"></pre>
