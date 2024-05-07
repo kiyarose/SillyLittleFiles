@@ -132,7 +132,7 @@ a:hover {
   transition: color 0.5s; /* Add a transition to make it fade into the color */
   transform: scale(1.1); /* Increase the size by 10% */
 }
- .blockbtn {
+.blockbtn {
       display: inline-block;
       padding: 8px 16px;
       font-size: 14px;
@@ -149,8 +149,6 @@ a:hover {
     .blockbtnhover {
       background-color: #F8C471
     }
-  </style>
-  <style>
     .container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
