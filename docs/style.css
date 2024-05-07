@@ -198,3 +198,10 @@ a:hover {
     cursor: pointer;
     animation: flipIn 0.5s ease-in-out;
   }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+      justify-items: center;
+      align-items: center;
+    }
