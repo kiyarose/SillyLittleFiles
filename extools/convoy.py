@@ -6,9 +6,9 @@ import pexpect
 def convert_ovpn_to_onc(ovpn_file, onc_file):
     """Converts a .ovpn file to the .onc file format using openvpn.
 
-    Args:
-      ovpn_file: Path to the input .ovpn file.
-      onc_file: Path to the output .onc file.
+    :param ovpn_file: Path to the input .ovpn file.
+    :param onc_file: Path to the output .onc file.
+
     """
     # OpenVPN command to extract information from the .ovpn file
     ovpn_cmd = f"openvpn --config {ovpn_file} --show-config"
