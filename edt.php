@@ -6,41 +6,41 @@ $errors = [];
 $message = '';
 
 if (isset($_FILES['json_file'])) {
-  $file = $_FILES['json_file'];
-  $fileName = $file['name'];
-  $fileTmpName = $file['tmp_name'];
-  $fileSize = $file['size'];
-  $fileError = $file['error'];
+    $file = $_FILES['json_file'];
+    $fileName = $file['name'];
+    $fileTmpName = $file['tmp_name'];
+    $fileSize = $file['size'];
+    $fileError = $file['error'];
 
-  // Check if a file was uploaded
-  if ($fileError === UPLOAD_ERR_NO_FILE) {
-    $errors[] = "Please select a file to upload.";
-  }
-
-  // Validate file size
-  $maxSize = 1048576; // 1MB
-  if ($fileSize > $maxSize) {
-    $errors[] = "File size exceeds limit (1MB).";
-  }
-
-  // Validate file type (optional, consider using mimes)
-  if ($file['type'] !== 'application/json') {
-    $errors[] = "Invalid file format. Please upload a JSON file.";
-  }
-
-  // Process and edit file if no errors
-  if (empty($errors)) {
-    $fileContent = file_get_contents($fileTmpName);
-    $jsonData = json_decode($fileContent, true); // Decode to associative array
-
-    // Perform editing here (replace with your editing logic)
-    if (isset($_POST['edit_content'])) {
-      $jsonData['edited_key'] = $_POST['edit_value']; // Example edit
-      $editedData = json_encode($jsonData, JSON_PRETTY_PRINT); // Encode with formatting
+    // Check if a file was uploaded
+    if ($fileError === UPLOAD_ERR_NO_FILE) {
+        $errors[] = "Please select a file to upload.";
     }
 
-    $message = 'File uploaded successfully.';
-  }
+    // Validate file size
+    $maxSize = 1048576; // 1MB
+    if ($fileSize > $maxSize) {
+        $errors[] = "File size exceeds limit (1MB).";
+    }
+
+    // Validate file type (optional, consider using mimes)
+    if ($file['type'] !== 'application/json') {
+        $errors[] = "Invalid file format. Please upload a JSON file.";
+    }
+
+    // Process and edit file if no errors
+    if (empty($errors)) {
+        $fileContent = file_get_contents($fileTmpName);
+        $jsonData = json_decode($fileContent, true); // Decode to associative array
+
+        // Perform editing here (replace with your editing logic)
+        if (isset($_POST['edit_content'])) {
+            $jsonData['edited_key'] = $_POST['edit_value']; // Example edit
+            $editedData = json_encode($jsonData, JSON_PRETTY_PRINT); // Encode with formatting
+        }
+
+        $message = 'File uploaded successfully.';
+    }
 }
 
 ?>
@@ -85,7 +85,7 @@ if (isset($_FILES['json_file'])) {
         // Sanitize filename before download
         $sanitizedName = preg_replace('/[^a-zA-Z0-9._-]/', '', $fileName);
         echo $sanitizedName;
-      ?>">Download Edited File</a>
+        ?>">Download Edited File</a>
 
       <?php endif; ?>
   <?php endif; ?>
