@@ -206,13 +206,3 @@ a:hover {
     0% {background-position: 0%}
     100% {background-position: 100%}
 }
-    h1 {
-      font-size: 5em;
-    }
-
-    img {
-      width: 300px;
-      height: 300px;
-      margin-top: 20px;
-    }
-
