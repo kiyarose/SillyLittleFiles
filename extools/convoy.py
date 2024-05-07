@@ -24,8 +24,7 @@ def convert_ovpn_to_onc(ovpn_file, onc_file):
         elif line.startswith("port "):
             data["VPNServerPort"] = line.split()[1]
         elif line.startswith("auth-user-pass "):
-            data["VPNUsername"] = os.path.splitext(
-                os.path.basename(ovpn_file))[0]
+            data["VPNUsername"] = os.path.splitext(os.path.basename(ovpn_file))[0]
 
     # Close the child process
     child.close()
