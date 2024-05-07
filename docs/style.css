@@ -182,24 +182,3 @@ a:hover {
     .flip-in {
       animation: flipIn 0.5s ease-in-out;
     }
-    .blockbtn {
-    padding: 8px 16px;
-    font-size: 14px;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    white-space: nowrap;
-    background-color: ;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    animation: flipIn 0.5s ease-in-out;
-  }
-    .container {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 10px;
-      justify-items: center;
-      align-items: center;
-    }
