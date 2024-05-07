@@ -49,7 +49,10 @@ h1 {
   font-size: 2em;
   animation: fade-in 1s ease-in forwards; /* Apply fade-in animation */
 }
-
+.udate {
+  color: lightgrey;
+  font-style: italic;
+}
 p {
   font-family: "Product Sans", sans-serif;
   font-size: 1em;
@@ -59,7 +62,6 @@ p {
 :root {
   --glow-rgb: 239 42 201;
 }
-
 * {
   margin: 0;
   padding: 0;
