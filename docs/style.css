@@ -26,6 +26,7 @@ p,
     background-size: 600% 100%;
     animation: gradient 16s linear infinite;
     animation-direction: alternate;
+    overflow: hidden;
 }
 @keyframes fade-in {
   from {
