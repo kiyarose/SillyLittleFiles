@@ -1,0 +1,60 @@
+<!DOCTYPE =HTML>
+<div class=wrapper>
+<head>
+        <a href="/" style="position: fixed; top: 10px; left: 10px; display: none;" id="backLink">←Homepage</a>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-009HP51NPG">
+         window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-009HP51NPG');
+        window.addEventListener('scroll', function() {
+                var backLink = document.getElementById('backLink');
+                if (window.scrollY === 0) {
+                        backLink.style.display = 'none';
+                } else {
+                        backLink.style.display = 'block';
+                }
+        });
+</script>
+<link rel="stylesheet" type="text/css" href="/style.css">
+<script src="/star.js"></script>
+
+
+
+<h1 id="ex">Changing File Regions</h1>
+<a href="/">←Homepage</a>
+<a href="#" font-style:italic;" onclick="copyToClipboard(window.location.href)">Copy Link</a><br>
+
+To Change the file region, you need a hostname. You can get this hostname from a .ovpn file.
+on the <a href="https://account.proton.me/u/6/vpn/OpenVpnIKEv2">IKEv2</a> page. Download a file from a region you want to emulate.
+For example;
+<img src="https://private-user-images.githubusercontent.com/75678535/328875738-9d3fa4f4-b6fb-434f-95cd-a85d4c2a1ed6.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTUxNjkxODUsIm5iZiI6MTcxNTE2ODg4NSwicGF0aCI6Ii83NTY3ODUzNS8zMjg4NzU3MzgtOWQzZmE0ZjQtYjZmYi00MzRmLTk1Y2QtYTg1ZDRjMmExZWQ2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA1MDglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwNTA4VDExNDgwNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTM2NWYxOGYzMTE3ZmQ0Y2U5MjZlMzgxMzA4ZjY0MDUxZTU5NTJkYTFlN2UyZDVlNGE0ZjY3ZTBiYWI2M2EwZDkmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.kTc_WNdQ49NnRGH7eceiFYHGlc8xq7u5wMWYetZ1sr8" width=600 alt="image"/>
+<br>
+Once downloading it,
+Drag it from the ChromeOS files app into the browser, it should now open in browser
+Somewhere in the file you should see numbers in this format ##.##.###.###
+Those numbers are your new hostname to put in <a href="/discussions/11.html">#11</a>
+<p style="font-style:italic;">Contact: </p><a style="font-style:italic;" href="mailto: technical@sillylittle.tech">technical@sillylittle.tech</a>
+<p id="udate" style="color:lightgrey; font-style:italic;">Synced: </p>
+
+<script>
+document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;
+</script>
+</center>
+<script src="https://giscus.app/client.js"
+        data-repo="DamianSwanAAJHS2/SillyLittleFiles"
+        data-repo-id="R_kgDOJPpxXw"
+        data-mapping="number"
+        data-term="193"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
