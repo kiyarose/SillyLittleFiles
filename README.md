@@ -1,4 +1,4 @@
-# [Silly Little Files](https://sillylittlefiles.web.app)
+# [Silly Little Files](https://sillylittle.tech)
 
 <center>
 
@@ -6,9 +6,9 @@
 
 ### See [#11](https://github.com/DamianSwanAAJHS2/SillyLittleFiles/discussions/11) for a tutorial on how to make files, although this requires some level of critical thinking.
 
-### [File Creator](https://sillylittlefiles.web.app/filecreator.html)
+### [File Creator](https://sillylittle.tech//tools/filecreator.html)
 
-### [Cred Directory](https://sillylittlefiles.web.app/directory.html)
+### [Cred Directory](https://sillylittle.tech/directory/)
 
 ### Technical Links
 
