@@ -1,12 +1,13 @@
 <!doctype html>
+<div class=wrapper>
 <!DIR>
 <html lang="en">
   <head>
-    <a href="/" style="position: fixed; top: 10px; left: 10px;">←Back</a>
+    <a href="/tools/" style="position: fixed; top: 10px; left: 10px;">←Back</a>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <script src="star.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <script src="/star.js"></script>
     <style>
       .dropdown {
         display: none;
@@ -47,12 +48,12 @@
   gtag('config', 'G-009HP51NPG');
 </script>
   <body>
-    <center>
+
       <br />
       <h1>Credential Lister</h1><br>
       <a href="#" font-style:italic;" onclick="copyToClipboard(window.location.href)">Copy Link</a><br>
       <br />
-      <a href="downloader.html">Downloads</a>
+      <a href="downloader.html"><button style="display: inline-block; padding: 0.5em 1em; font-size: 1em; font-weight: bold; text-align: center; text-decoration: none; background-color: #F8C471; color: #ffffff; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.3s ease;">Downloads</button></a><br>
       <br />
       <!-- Dropdown button for the first script -->
       <button onload="DropdownSet()" onclick="toggleDropdown('script1')" style="display: inline-block; padding: 0.5em 1em; font-size: 1em; font-weight: bold; text-align: center; text-decoration: none; background-color: #24292e; color: #ffffff; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.3s ease;">
@@ -152,5 +153,6 @@
       // Your existing functions go here
       // ...
     </script>
-  </body>
+  </body>'
+</div>
 </html>
