@@ -1,0 +1,56 @@
+<!DOCTYPE =HTML>
+<div class=wrapper>
+<head>
+        <a href="/" style="position: fixed; top: 10px; left: 10px; display: none;" id="backLink">←Back</a>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-009HP51NPG">
+         window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-009HP51NPG');
+        window.addEventListener('scroll', function() {
+                var backLink = document.getElementById('backLink');
+                if (window.scrollY === 0) {
+                        backLink.style.display = 'none';
+                } else {
+                        backLink.style.display = 'block';
+                }
+        });
+</script>
+<link rel="stylesheet" type="text/css" href="/style.css">
+<script src="/star.js"></script>
+
+
+
+<h1 id="ex">Outline Video</h1>
+<a href="/">←Back</a>
+<a href="#" font-style:italic;" onclick="copyToClipboard(window.location.href)">Copy Link</a><br>
+
+<video width="320" height="240" controls>
+  <source src="/discussions/google_screen_recording_2024-05-08T04-12_14.958Z.webm" type="video/webm">
+Your browser does not support the video tag.
+</video>
+An Outline Video on Making and Importing Files
+<p style="font-style:italic;">Contact: </p><a style="font-style:italic;" href="mailto: technical@sillylittle.tech">technical@sillylittle.tech</a>
+<p id="udate" style="color:lightgrey; font-style:italic;">Synced: </p>
+
+<script>
+document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;
+</script>
+</center>
+<script src="https://giscus.app/client.js"
+        data-repo="DamianSwanAAJHS2/SillyLittleFiles"
+        data-repo-id="R_kgDOJPpxXw"
+        data-mapping="number"
+        data-term="190"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
