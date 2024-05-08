@@ -1,28 +1,10 @@
 <!DOCTYPE=HTML>
 <link rel="stylesheet" type="text/css" href="style.css">
+<div class=wrapper>
 <script src="star.js"></script>
-<style>
-.red-border {
-  border: 2px solid red;
-  opacity: 0; /* Set initial opacity to 0 */
-  animation: fade-in 1s ease-in forwards; /* Apply fade-in animation */
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0; /* Start with opacity 0 */
-  }
-  to {
-    opacity: 1; /* End with opacity 1 */
-  }
-}
-</style>
-
 <div class="red-border">
-    <center>
         <h3 id="ip">Fetching...</h3>
         <h3 id="region">Fetching...</h3>
-    </center>
 </div>
 <script>
 fetch('https://api.ipify.org?format=json')
@@ -38,7 +20,6 @@ fetch('https://api.ipify.org?format=json')
     document.getElementById("ip").title = data.org
 });
 </script>
-<center>
 <a href="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/overview/main">
     <img src="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/badge/main" alt="CodeFactor" />
 </a>
@@ -52,18 +33,13 @@ fetch('https://api.ipify.org?format=json')
 <a href="#" font-style:italic;" onclick="copyToClipboard(window.location.href)">Copy Link</a>
 <h1>SLF Protocol Setup</h1><br>
 <h3 style='font-family:arial'>
-    See <a href='/1.html' style='font-family:arial'>#1</a> for how to import files!<br>
+    <a href='/discussions/1.html' style='font-family:arial'>📥 #1</a> Importing files!<br>
 </h3>
 <h3 style='font-family:Arial'>
-    See <a href='/11.html' style='font-family:arial'>#11</a> for a tutorial on how to make files, although this requires some level of critical thinking.
+    <a href='/discussions/11.html' style='font-family:arial'>📝#11</a> Making files! (although you will have to use your brain)
 </h3>
 <br>
-<h3><a href='/filecreator.html'>File Creator</a></h3>
-<h3><a href='/directory.html'>Credential Directory</a></h3><br>
-<p style='font-family:arial'>Onc File Breakdown:</p>
-<a style='font-family:arial' href='https://github.com/DamianSwanAAJHS2/SillyLittleFiles/blob/source/silly.onc'>
-    https://chromium.googlesource.com/chromium/src/+/main/components/onc/docs/onc_spec.md
-</a>
+<h3><a href='/tools/'>🛠️ Tools</a></h3><br>
 <br>
 <p style="font-style:italic;">Contact: </p><a style="font-style:italic;" href="mailto: technical@sillylittle.tech">technical@sillylittle.tech</a>
 <p id="udate" style="color:lightgrey; font-style:italic;">Updated: </p>
@@ -95,4 +71,4 @@ function copyToClipboard(text) {
 
   gtag('config', 'G-009HP51NPG');
 </script>
-</center>
+</div>

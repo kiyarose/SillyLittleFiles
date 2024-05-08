@@ -1,75 +1,40 @@
-<html>
-  <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        color: white;
-        text-align: center;
-        animation: gradient 10s infinite;
-        background-size: cover;
-      }
+<title>SLF - 404</title>
+<div class=wrapper><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/style.css">
+<body class=wrapper>
+  <h1 id="word">404</h1>
+  <img id="image" alt="A random image" />
+  <h2>
+    <p id=random-word>You seem to be lost</p>
+    <center><hr class="divider"><center>
 
-      @keyframes gradient {
-        0% {
-          background: linear-gradient(to right, #ff0000, #ffff00);
-        }
-        25% {
-          background: linear-gradient(to right, #ffff00, #00ff00);
-        }
-        50% {
-          background: linear-gradient(to right, #00ff00, #00ffff);
-        }
-        75% {
-          background: linear-gradient(to right, #00ffff, #0000ff);
-        }
-        100% {
-          background: linear-gradient(to right, #0000ff, #ff0000);
-        }
-      }
+    <a href="/">Back</a>
+  </h2>
+  <script>
+    // Get a random image from the Lorem Picsum API
+    var picsum_url = "https://picsum.photos/300";
+    // Set the image source as the url
+    $("#image").attr("src", picsum_url);
 
-      h1 {
-        font-size: 5em;
-      }
+    // (Optional) Remove interval-based animation (if present in star.js)
+  </script>
+  <p style="font-style:italic;">Contact: </p><a style="font-style:italic;" href="mailto:technical@sillylittle.tech">technical@sillylittle.tech</a>
+  </div>
 
-      img {
-        width: 300px;
-        height: 300px;
-        margin-top: 20px;
-      }
-    </style>
-  </head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-009HP51NPG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+</body>
+  <script>
+    const wordElement = document.getElementById('random-word');
 
-  gtag('config', 'G-009HP51NPG');
-</script>
-  <body>
-    <h1 id="word">404</h1>
-    <img id="image" alt="A random image" />
-    <h2>
-      <a href="/">Back</a>
-    </h2>
-    <script src="star.js"></script>
-    <script>
-      // Get a random word from the Wordnik API
-      /*var wordnik_url = "https://api.wordnik.com/v4/words.json/randomWord?hasDictionaryDef=true&minCorpusCount=0&minLength=5&maxLength=15&api_key=YOUR_API_KEY";
-$.getJSON(wordnik_url, function(data) {
-  // Set the word as the text of the h1 element
-  $("#word").text(data.word);
-});
-*/
-      // Get a random image from the Lorem Picsum API
-      var picsum_url = "https://picsum.photos/300";
-      // Set the image source as the url
-      $("#image").attr("src", picsum_url);
-    </script>
-    <p style="font-style:italic;">Contact: </p><a style="font-style:italic;" href="mailto: technical@sillylittle.tech">technical@sillylittle.tech</a>
-  </body>
-</html>
+    async function fetchRandomWord() {
+      try {
+        const response = await fetch('https://random-word-api.herokuapp.com/word');
+        const data = await response.json();
+        wordElement.textContent = data;
+      } catch (error) {
+        console.error('Error fetching word:', error);
+        wordElement.textContent = 'Error fetching word.';
+      }
+    }
+
+    fetchRandomWord();
+  </script>
