@@ -13,7 +13,21 @@ p,
   opacity: 0; /* Set initial opacity to 0 */
   animation: fade-in 1s ease-in forwards; /* Apply fade-in animation */
 }
-
+ .divider {
+      border: 1px solid #ffffff; /* Set line thickness and color */
+      margin: 10px 0; /* Add space above and below the line */
+      width: 200px; /* Set your desired fixed width */
+           }
+.wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: linear-gradient(45deg,#ffef00, #e69138, #24AADB , #27DBB1,#FFDC18, #FF3706);
+    background-size: 600% 100%;
+    animation: gradient 16s linear infinite;
+    animation-direction: alternate;
+    overflow: scroll;
+}
 @keyframes fade-in {
   from {
     opacity: 0; /* Start with opacity 0 */
@@ -27,15 +41,19 @@ p,
 body {
   font-family: "Product Sans", sans-serif;
   animation: fade-in 1s ease-in forwards; /* Apply fade-in animation */
+  text-align: center;
+  color: white;
 }
 
 h1 {
   font-family: "Product Sans", sans-serif;
   font-size: 2em;
-  color: #333;
   animation: fade-in 1s ease-in forwards; /* Apply fade-in animation */
 }
-
+.udate {
+  color: lightgrey;
+  font-style: italic;
+}
 p {
   font-family: "Product Sans", sans-serif;
   font-size: 1em;
@@ -45,7 +63,6 @@ p {
 :root {
   --glow-rgb: 239 42 201;
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -132,10 +149,16 @@ p {
     opacity: 1; /* End with opacity 1 */
   }
 }
+a {
+  color: #A0D6E8;
+}
 a:hover {
   color: green; /* Change the color to your desired color */
   transition: color 0.5s; /* Add a transition to make it fade into the color */
   transform: scale(1.1); /* Increase the size by 10% */
+}
+a:visited {
+  color: #C2C2F0;
 }
 .blockbtn {
       display: inline-block;
@@ -187,3 +210,7 @@ a:hover {
     .flip-in {
       animation: flipIn 0.5s ease-in-out;
     }
+@keyframes gradient {
+    0% {background-position: 0%}
+    100% {background-position: 100%}
+}
