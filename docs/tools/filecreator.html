@@ -22,6 +22,7 @@
 <body>File Name
     <input value="Silly Little Clone" placeholder="Config Name" id ="nametype"></input><br>
     Host Name<input value="89.39.107.188" placeholder="Host Server" id ="hostname"></input><br>
+    Host Port<input value="51820" placeholder="Host Port" id="hostport"></input><br>
     User Name<input value="ih1M47aG67vpkrph" placeholder="Username" id ="username"></input><br>
    Pass Key <input value="lqhscAT04QLKPiK5sDtSTKaaIyQexkDW" placeholder="Password" id="password"></input><br>
     <textarea id="inputBox" rows="4" cols="50">{
@@ -47,7 +48,7 @@
 "Type": "OpenVPN",
 "Host": "HST",
 "OpenVPN": {
-"Port": 51820,
+"Port": "PRT",
 "UserAuthenticationType": "Password",
 "CompLZO": "false",
 "SaveCredentials": true,
@@ -123,16 +124,19 @@
         function submit() {
             var nametype = document.getElementById('nametype').value
             var hostname = document.getElementById('hostname').value
+            var hostport = document.getElementById('hostport').value
             var username = document.getElementById('username').value
             var password = document.getElementById('password').value
             var inputBox = document.getElementById('inputBox');
             document.getElementById('nametype').disabled = true;
             document.getElementById('hostname').disabled = true;
+            document.getElementById('hostport').disabled = true;
             document.getElementById('username').disabled = true;
             document.getElementById('password').disabled = true;
             var text = inputBox.value;
             text = text.replace('"Name": "NME"', '"Name": "' + nametype + '"');
             text = text.replace('"Host": "HST"', '"Host": "' + hostname + '"');
+            text = text.replace('"Port": "PRT"', '"Port": "' + hostport + '"');
             text = text.replace('"Username": "USNM"', '"Username": "' + username + '"');
             text = text.replace('"Password": "PASSD"', '"Password": "' + password + '"');
             inputBox.value = text;
@@ -153,7 +157,7 @@
   document.body.removeChild(element);
 }
 function reload() {
- window.location.replace("https://sillyfiles.page.link/creator")
+ window.location.replace("https://sillylittle.tech/tools/filecreator.html")
 }
     </script>
     <p style="font-style:italic;">Contact: </p><a style="font-style:italic;" href="mailto: technical@sillylittle.tech">technical@sillylittle.tech</a>
