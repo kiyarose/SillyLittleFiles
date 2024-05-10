@@ -114,6 +114,8 @@
             var text = document.getElementById("inputBox").value;
             var element = document.createElement('a');
             element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            const wordElement = document.getElementById("random-word");
+            async function fetchRandomWord() {
               try {
                     const response = await fetch("https://random-word-api.herokuapp.com/word");
                     const data = await response.json();
@@ -123,7 +125,8 @@
                     console.error("Error fetching word:", error);
                     const filename = "pop.onc";
                  }
-            fetchRandomWord();
+                                            }
+            fetchRandomWord()
             element.setAttribute('download', filename);
             element.style.display = 'none';
             document.body.appendChild(element);
