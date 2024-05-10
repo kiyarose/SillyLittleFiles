@@ -214,3 +214,7 @@ a:visited {
     0% {background-position: 0%}
     100% {background-position: 100%}
 }
+.splashtool {
+  margin-top: 300px; /* Adjust margin as needed */
+  font-size: 29;
+}
