@@ -26,7 +26,7 @@
     Host Port<input type=number value="51820" title="What port to connect to, default should be good if you don't know" placeholder="Host Port" id="hostport"></input><br>
    <a href="/discussions/11.html" target="_blank">User Name</a><input title="Your Username to authenticate!" type=text value="ih1M47aG67vpkrph" placeholder="Username" id ="username"></input><br>
    Pass Key <input title="Your password to authenticate!" type=text value="lqhscAT04QLKPiK5sDtSTKaaIyQexkDW" placeholder="Password" id="password"></input><br>
-    <textarea id="inputBox" rows="4" cols="50">{
+    <textarea title="This is where the data you put in above will go!" id="inputBox" rows="4" cols="50" disabled>{
 "Type": "UnencryptedConfiguration",
 "Certificates": [
 {
@@ -131,7 +131,6 @@
             text = text.replace('"Username": "USNM"', '"Username": "' + username + '"');
             text = text.replace('"Password": "PASSD"', '"Password": "' + password + '"');
             inputBox.value = text;
-            inputBox.disabled = true;
             document.getElementById("downloadButton").disabled = false;
             document.getElementById("submitbutton").style.display = 'block';
         }
