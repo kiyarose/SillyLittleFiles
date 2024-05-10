@@ -1,9 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Product+Sans");
 /* FILEPATH: /workspaces/SillyLittleFiles/docs/style.css */
 /* BEGIN: be15d9bcejpp */
-body,
-h1,
-p,
 .red-border {
   border: 2px solid red;
   opacity: 0; /* Set initial opacity to 0 */
