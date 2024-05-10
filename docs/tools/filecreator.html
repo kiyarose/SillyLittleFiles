@@ -121,6 +121,7 @@
                     const data = await response.json();
 
                     const filename = data + ".onc"; // Set the page title to the random word
+                    return filename;
                  } catch (error) {
                     console.error("Error fetching in fetchRandomWord:", error);
                  }
