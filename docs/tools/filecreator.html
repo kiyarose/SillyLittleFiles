@@ -19,13 +19,14 @@
   gtag('config', 'G-009HP51NPG');
 </script>
 <p>Check out <a href="/11.html">#11</a> for details on how to use this creator (Getting your OpenVPN Credentials, Server Hosts, etc)</p><br>
+<p>Hover over a specific field to get some brief info on it! Any links will take you to the relivant page to get you in the know.</p><br>
 <body>File Name
-    <input value="Silly Little Clone" placeholder="Config Name" id ="nametype"></input><br>
-    Host Name<input value="89.39.107.188" placeholder="Host Server" id ="hostname"></input><br>
-    Host Port<input type=number value="51820" placeholder="5060, 51820, 80, 4569, 1194" id="hostport"></input><br>
-    User Name<input type=text value="ih1M47aG67vpkrph" placeholder="Username" id ="username"></input><br>
-   Pass Key <input type=text value="lqhscAT04QLKPiK5sDtSTKaaIyQexkDW" placeholder="Password" id="password"></input><br>
-    <textarea id="inputBox" rows="4" cols="50">{
+   <input title="You can name this anything!!" value="Silly Little Clone" placeholder="Config Name" id ="nametype"></input><br>
+   <a href="/tools/directory/serverlister.html" target="_blank">Host Name</a><input title="The IP address to connect to" value="89.39.107.188" placeholder="Host Server" id ="hostname"></input><br>
+   <a href="/tools/directory/serverlister.html" target="_blank">Host Port</a><input type=number value="51820" title="What port to connect to, default should be good if you don't know" placeholder="Host Port" id="hostport"></input><br>
+   <a href="/discussions/11.html" target="_blank">User Name</a><input title="Your Username to authenticate!" type=text value="ih1M47aG67vpkrph" placeholder="Username" id ="username"></input><br>
+   <a href="/discussions/11.html" target="_blank">Pass Key</a><input title="Your password to authenticate!" type=text value="lqhscAT04QLKPiK5sDtSTKaaIyQexkDW" placeholder="Password" id="password"></input><br>
+    <textarea title="This is where the data you put in above will go!" id="inputBox" rows="4" cols="50" disabled>{
 "Type": "UnencryptedConfiguration",
 "Certificates": [
 {
@@ -74,7 +75,7 @@
 ]
 }
 </textarea><br>
-    <button onclick="submit()" class="explosion-button" style="display: inline-block; padding: 0.5em 1em; font-size: 1em; font-weight: bold; text-align: center; text-decoration: none; background-color: #24292e; color: #ffffff; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.3s ease;">Let 'em Cook</button>
+    <button title="Smash your data in, and download the results!" onclick="submit()" class="explosion-button" style="display: inline-block; padding: 0.5em 1em; font-size: 1em; font-weight: bold; text-align: center; text-decoration: none; background-color: #24292e; color: #ffffff; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.3s ease;">Let 'em Cook</button>
     <style>
         @keyframes explosion {
             0% {
@@ -86,40 +87,10 @@
                 opacity: 0;
             }
         }
-
         .explosion-button {
             animation: explosion 0.5s linear;
         }
     </style>
-    <button onclick="download()" id="downloadButton" class="blink-animation" style="display: inline-block; padding: 0.5em 1em; font-size: 1em; font-weight: bold; text-align: center; text-decoration: none; background-color: #24292e; color: #ffffff; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.3s ease;">Download</button>
-    <style>
-        @keyframes blink {
-            0% {
-                background-color: green;
-            }
-            50% {
-                background-color: transparent;
-            }
-            100% {
-                background-color: green;
-            }
-        }
-
-        .blink-animation {
-            animation: blink 3s linear;
-        }
-    </style>
-
-    <script>
-        function download() {
-            var button = document.getElementById("downloadButton");
-            button.classList.add("blink-animation");
-            setTimeout(function() {
-                button.classList.remove("blink-animation");
-            }, 3000);
-        }
-    </script>
-    <button id="submitbutton" onclick="reload()" style="display: none">New Project</button>
     <script>
         function submit() {
             var nametype = document.getElementById('nametype').value
@@ -140,25 +111,44 @@
             text = text.replace('"Username": "USNM"', '"Username": "' + username + '"');
             text = text.replace('"Password": "PASSD"', '"Password": "' + password + '"');
             inputBox.value = text;
-            inputBox.disabled = true;
-            document.getElementById("submitbutton").style.display = 'block';
-        }
-            function download() {
-  var text = document.getElementById("inputBox").value;
-  var element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-  element.setAttribute('download', "pop.onc");
+            var text = document.getElementById("inputBox").value;
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            const wordElement = document.getElementById("random-word");
+            async function fetchRandomWord() {
+              try {
+                    const response = await fetch("https://random-word-api.herokuapp.com/word");
+                    const data = await response.json();
 
-  element.style.display = 'none';
-  document.body.appendChild(element);
-
-  element.click();
-
-  document.body.removeChild(element);
-}
-function reload() {
- window.location.replace("https://sillylittle.tech/tools/filecreator.html")
-}
+                    const filename = data + ".onc"; // Set the page title to the random word
+                    return filename;
+                 } catch (error) {
+                    console.error("Error fetching in fetchRandomWord:", error);
+                 }
+                                            }
+            async function downloadFile() {
+                  try {
+                        const filename = await fetchRandomWord();
+                        element.setAttribute('download', filename);
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+                        element.click();
+                        document.body.removeChild(element);
+                        window.location.reload();
+                        alert("Your file has been delivered as: " + filename);
+                      } catch (error) {
+                        console.error("Error fetching word in downloadFile:", error);
+                        element.setAttribute('download', "pop.onc");
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+                        element.click();
+                        document.body.removeChild(element);
+                        window.location.reload();
+                        alert("Your file has been delivered as: " + filename);
+                      }
+                      }
+                        downloadFile(); // Call the async function
+                                                }
     </script>
     <p style="font-style:italic;">Contact: </p><a style="font-style:italic;" href="mailto: technical@sillylittle.tech">technical@sillylittle.tech</a>
     </center>
