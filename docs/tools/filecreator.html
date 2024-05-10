@@ -111,8 +111,6 @@
             text = text.replace('"Username": "USNM"', '"Username": "' + username + '"');
             text = text.replace('"Password": "PASSD"', '"Password": "' + password + '"');
             inputBox.value = text;
-            document.getElementById("downloadButton").disabled = false;
-            document.getElementById("submitbutton").style.display = 'block';
             var text = document.getElementById("inputBox").value;
             var element = document.createElement('a');
             element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
