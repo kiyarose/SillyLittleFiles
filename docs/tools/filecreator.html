@@ -114,13 +114,26 @@
             var text = document.getElementById("inputBox").value;
             var element = document.createElement('a');
             element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-            element.setAttribute('download', "pop.onc");
+            const wordElement = document.getElementById("random-word");
+            async function fetchRandomWord() {
+              try {
+                    const response = await fetch("https://random-word-api.herokuapp.com/word");
+                    const data = await response.json();
+
+                    const filename = data + ".onc"; // Set the page title to the random word
+                 } catch (error) {
+                    console.error("Error fetching word:", error);
+                    const filename = "pop.onc";
+                 }
+                                            }
+            element.setAttribute('download', filename);
             element.style.display = 'none';
             document.body.appendChild(element);
             element.click();
             document.body.removeChild(element);
             window.location.reload();
-        }
+            alert("Your file has been delivered as: " + filename);
+                                                }
     </script>
     <p style="font-style:italic;">Contact: </p><a style="font-style:italic;" href="mailto: technical@sillylittle.tech">technical@sillylittle.tech</a>
     </center>
