@@ -1,0 +1,125 @@
+<!doctype html>
+<div class=wrapper>
+<!DIR>
+<html lang="en">
+  <head>
+    <a href="/tools/" style="position: fixed; top: 10px; left: 10px;">←All Tools</a>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="https://sillylittle.tech/style.css" />
+    <script src="https://sillylittle.tech/star.js"></script>
+    <style>
+      .dropdown {
+        display: none;
+        animation: magicLamp 1s ease-in-out;
+      }
+
+      @keyframes magicLamp {
+        0% {
+          opacity: 0;
+          transform: scale(0);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.2);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* Updated styles for the center element */
+     /* center {
+        margin-left: 20px;
+        margin-right: 20px;
+        max-width: 800px;
+      }
+      */
+    </style>
+  </head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-009HP51NPG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-009HP51NPG');
+</script>
+  <body>
+
+      <br />
+      <h1>Server Lister</h1><br>
+      <a href="#" font-style:italic;" onclick="copyToClipboard(window.location.href)">Copy Link</a><br>
+      <br />
+
+      <br />
+      <!-- Dropdown button for the first script -->
+      <button onload="DropdownSet()" onclick="toggleDropdown('script1')" style="display: inline-block; padding: 0.5em 1em; font-size: 1em; font-weight: bold; text-align: center; text-decoration: none; background-color: #24292e; color: #ffffff; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.3s ease;">
+        Hostnames</button
+      ><br />
+      <div id="script1" class="dropdown">
+        <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2FDamianSwanAAJHS2%2FSillyLittleFiles%2Fblob%2Fmain%2Fserver.master&style=default&type=markdown&showLineNumbers=on&showFileMeta=on&showFullPath=on"></script>
+      </div>
+      <br />
+      <style>
+        .dropdown {
+          display: none;
+          animation: magicLamp 1s ease-in-out;
+          margin: 55px; /* Add margin to the dropdown element */
+        }
+
+        @keyframes magicLamp {
+          0% {
+            opacity: 0;
+            transform: scale(0);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.2);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      </style>
+<br>
+      <p>Modify the Master file:</p>
+
+      <a
+        href="https://github.com/DamianSwanAAJHS2/SillyLittleFiles/edit/main/server.master"
+        >server.master</a
+      >
+
+    <script>
+      var s1 = document.getElementById("script1");
+      s1.style.display = "none";
+      console.log("Set visibility to none to prevent dual clicking");
+
+      // Function to toggle the visibility of the dropdown
+      function DropdownSet() {
+        var s1 = document.getElementById("script1");
+        s1.style.display = "none";
+        console.log("Set visibility to none to prevent dual clicking");
+      }
+      function toggleDropdown(dropdownId) {
+        var dropdown = document.getElementById(dropdownId);
+        if (dropdown.style.display === "none") {
+          dropdown.style.display = "block";
+        } else {
+          dropdown.style.display = "none";
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        fetchcreds(); // Call fetchcreds on page load
+      });
+
+      // Your existing functions go here
+      // ...
+    </script>
+  </body>'
+</div>
+</html>
