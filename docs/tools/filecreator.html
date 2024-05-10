@@ -122,18 +122,31 @@
 
                     const filename = data + ".onc"; // Set the page title to the random word
                  } catch (error) {
-                    console.error("Error fetching word:", error);
-                    const filename = "pop.onc";
+                    console.error("Error fetching in fetchRandomWord:", error);
                  }
                                             }
-            fetchRandomWord()
-            element.setAttribute('download', filename);
-            element.style.display = 'none';
-            document.body.appendChild(element);
-            element.click();
-            document.body.removeChild(element);
-            window.location.reload();
-            alert("Your file has been delivered as: " + filename);
+            async function downloadFile() {
+                  try {
+                        const filename = await fetchRandomWord();
+                        element.setAttribute('download', filename);
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+                        element.click();
+                        document.body.removeChild(element);
+                        window.location.reload();
+                        alert("Your file has been delivered as: " + filename);
+                      } catch (error) {
+                        console.error("Error fetching word in downloadFile:", error);
+                        element.setAttribute('download', "pop.onc");
+                        element.style.display = 'none';
+                        document.body.appendChild(element);
+                        element.click();
+                        document.body.removeChild(element);
+                        window.location.reload();
+                        alert("Your file has been delivered as: " + filename);
+                      }
+                      }
+                        downloadFile(); // Call the async function  
                                                 }
     </script>
     <p style="font-style:italic;">Contact: </p><a style="font-style:italic;" href="mailto: technical@sillylittle.tech">technical@sillylittle.tech</a>
