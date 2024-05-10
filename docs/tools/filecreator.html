@@ -110,7 +110,6 @@
             animation: blink 3s linear;
         }
     </style>
-    <button id="submitbutton" onclick="reload()" style="display: none">New Project</button>
     <script>
         function submit() {
             var nametype = document.getElementById('nametype').value
@@ -133,28 +132,16 @@
             inputBox.value = text;
             document.getElementById("downloadButton").disabled = false;
             document.getElementById("submitbutton").style.display = 'block';
-            alert("Success! You can now press download to get the results!");
+            var text = document.getElementById("inputBox").value;
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', "pop.onc");
+            element.style.display = 'none';
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+            window.location.reload();
         }
-function download() {
-  var button = document.getElementById("downloadButton");
-  button.classList.add("blink-animation");
-  setTimeout(function() {
-        button.classList.remove("blink-animation");
-     }, 3000);
-  var text = document.getElementById("inputBox").value;
-  var element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-  element.setAttribute('download', "pop.onc");
-  element.style.display = 'none';
-  document.body.appendChild(element);
-
-  element.click();
-
-  document.body.removeChild(element);
-}
-function reload() {
- window.location.replace("https://sillylittle.tech/tools/filecreator.html")
-}
     </script>
     <p style="font-style:italic;">Contact: </p><a style="font-style:italic;" href="mailto: technical@sillylittle.tech">technical@sillylittle.tech</a>
     </center>
