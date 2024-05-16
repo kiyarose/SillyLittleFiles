@@ -1,19 +1,7 @@
 # [Silly Little Files](https://sillylittle.tech)
 
-<center>
-
-### See [#1](https://github.com/DamianSwanAAJHS2/SillyLittleFiles/discussions/1) for how to import files!<br>
-
-### See [#11](https://github.com/DamianSwanAAJHS2/SillyLittleFiles/discussions/11) for a tutorial on how to make files, although this requires some level of critical thinking.
-
-### [File Creator](https://sillylittle.tech//tools/filecreator.html)
-
-### [Cred Directory](https://sillylittle.tech/directory/)
-
-### Technical Links
-
-Onc PM File Source: <a href='https://github.com/DamianSwanAAJHS2/SillyLittleFiles/blob/source/silly.onc'>https://github.com/DamianSwanAAJHS2/SillyLittleFiles/blob/source/silly.onc</a> <br>
-Onc File Breakdown: <a href='https://github.com/DamianSwanAAJHS2/SillyLittleFiles/blob/source/silly.onc'>https://chromium.googlesource.com/chromium/src/+/main/components/onc/docs/onc_spec.md</a>
+Source code for SLF website\
+[Status page source code](https://github.com/DamianSwanAAJHS2/SillyLittleFiles.status)
 
 <a href="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/overview/main">
     <img src="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/badge/main" alt="CodeFactor" />
