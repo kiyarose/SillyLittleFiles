@@ -1,15 +1,15 @@
 function submit() {
-  var nametype = document.getElementById('nametype').value
-  var hostname = document.getElementById('hostname').value
-  var hostport = document.getElementById('hostport').value
-  var username = document.getElementById('username').value
-  var password = document.getElementById('password').value
-  var inputBox = document.getElementById('inputBox');
-  document.getElementById('nametype').disabled = true;
-  document.getElementById('hostname').disabled = true;
-  document.getElementById('hostport').disabled = true;
-  document.getElementById('username').disabled = true;
-  document.getElementById('password').disabled = true;
+  var nametype = document.getElementById("nametype").value;
+  var hostname = document.getElementById("hostname").value;
+  var hostport = document.getElementById("hostport").value;
+  var username = document.getElementById("username").value;
+  var password = document.getElementById("password").value;
+  var inputBox = document.getElementById("inputBox");
+  document.getElementById("nametype").disabled = true;
+  document.getElementById("hostname").disabled = true;
+  document.getElementById("hostport").disabled = true;
+  document.getElementById("username").disabled = true;
+  document.getElementById("password").disabled = true;
   var text = inputBox.value;
   text = text.replace('"Name": "NME"', '"Name": "' + nametype + '"');
   text = text.replace('"Host": "HST"', '"Host": "' + hostname + '"');
@@ -18,14 +18,17 @@ function submit() {
   text = text.replace('"Password": "PASSD"', '"Password": "' + password + '"');
   inputBox.value = text;
   var text = document.getElementById("inputBox").value;
-  var element = document.createElement('a');
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' +
-                                   encodeURIComponent(text));
+  var element = document.createElement("a");
+  element.setAttribute(
+    "href",
+    "data:text/plain;charset=utf-8," + encodeURIComponent(text),
+  );
   const wordElement = document.getElementById("random-word");
   async function fetchRandomWord() {
     try {
-      const response =
-          await fetch("https://random-word-api.herokuapp.com/word");
+      const response = await fetch(
+        "https://random-word-api.herokuapp.com/word",
+      );
       const data = await response.json();
 
       const filename = data + ".onc"; // Set the page title to the random word
@@ -39,8 +42,8 @@ function submit() {
   async function downloadFile() {
     try {
       const filename = await fetchRandomWord();
-      element.setAttribute('download', filename);
-      element.style.display = 'none';
+      element.setAttribute("download", filename);
+      element.style.display = "none";
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);
@@ -48,8 +51,8 @@ function submit() {
       alert("Your file has been delivered as: " + filename);
     } catch (error) {
       console.error("Error fetching word in downloadFile:", error);
-      element.setAttribute('download', "pop.onc");
-      element.style.display = 'none';
+      element.setAttribute("download", "pop.onc");
+      element.style.display = "none";
       document.body.appendChild(element);
       element.click();
       document.body.removeChild(element);
