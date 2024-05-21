@@ -107,7 +107,7 @@
             var text = inputBox.value;
             text = text.replace('"Name": "NME"', '"Name": "' + nametype + '"');
             text = text.replace('"Host": "HST"', '"Host": "' + hostname + '"');
-            text = text.replace('"Port": "PRT"', '"Port": "' + hostport + '"');
+            text = text.replace('"Port": "PRT"', '"Port": ' + hostport);
             text = text.replace('"Username": "USNM"', '"Username": "' + username + '"');
             text = text.replace('"Password": "PASSD"', '"Password": "' + password + '"');
             inputBox.value = text;
