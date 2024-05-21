@@ -23,7 +23,6 @@ function submit() {
     "href",
     "data:text/plain;charset=utf-8," + encodeURIComponent(text),
   );
-  const wordElement = document.getElementById("random-word");
   async function fetchRandomWord() {
     try {
       const response = await fetch(
