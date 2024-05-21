@@ -124,6 +124,8 @@
                     return filename;
                  } catch (error) {
                     console.error("Error fetching in fetchRandomWord:", error);
+                    const filename = "pop.onc"; // Fallback to default file name if error
+                    return filename;
                  }
                                             }
             async function downloadFile() {
