@@ -8,7 +8,6 @@ async function fetchRandomWord() {
     document.title = "SLF — " + data; // Set the page title to the random word
   } catch (error) {
     console.error("Error fetching word:", error);
-    wordElement.textContent = "Error fetching word.";
   }
 }
 
