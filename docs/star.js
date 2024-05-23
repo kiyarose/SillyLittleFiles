@@ -14,8 +14,7 @@ async function fetchRandomWord() {
 // Call the function to fetch a random word on page load
 fetchRandomWord();
 
-document.getElementById("udate").innerHTML =
-  document.getElementById("udate").innerHTML + document.lastModified;
+document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;
 // Fetch last modified date and apply it to the udate element that is on some
 // pages.
 
