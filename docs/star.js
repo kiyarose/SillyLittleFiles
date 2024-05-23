@@ -14,22 +14,23 @@ async function fetchRandomWord() {
 // Call the function to fetch a random word on page load
 fetchRandomWord();
 
-document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;
-// Fetch last modified date and apply it to the udate element that is on some pages. 
+document.getElementById("udate").innerHTML =
+  document.getElementById("udate").innerHTML + document.lastModified;
+// Fetch last modified date and apply it to the udate element that is on some pages.
 
 // Defined the copyToClipboard function, that is used on some pages
 function copyToClipboard(text) {
-    var textarea = document.createElement("textarea");
-    textarea.textContent = text;
-    textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
-    document.body.appendChild(textarea);
-    textarea.select();
-    try {
-        return document.execCommand("copy");  // Security exception may be thrown by some browsers.
-    } catch (ex) {
-        console.warn("Copy to clipboard failed.", ex);
-        return false;
-    } finally {
-        document.body.removeChild(textarea);
-    }
+  var textarea = document.createElement("textarea");
+  textarea.textContent = text;
+  textarea.style.position = "fixed"; // Prevent scrolling to bottom of page in MS Edge.
+  document.body.appendChild(textarea);
+  textarea.select();
+  try {
+    return document.execCommand("copy"); // Security exception may be thrown by some browsers.
+  } catch (ex) {
+    console.warn("Copy to clipboard failed.", ex);
+    return false;
+  } finally {
+    document.body.removeChild(textarea);
+  }
 }
