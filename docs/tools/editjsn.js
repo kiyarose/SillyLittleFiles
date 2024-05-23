@@ -22,7 +22,7 @@ function validateJSON() {
 function downloadJSON() {
   const jsonText = document.getElementById("jsonInput").value;
   const filename = "out.json";
-  const blob = new Blob([jsonText], { type: "application/json" });
+  const blob = new Blob([ jsonText ], {type : "application/json"});
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
   link.download = filename;
