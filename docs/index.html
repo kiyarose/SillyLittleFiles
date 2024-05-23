@@ -56,6 +56,7 @@ fetch('https://api.ipify.org?format=json')
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-009HP51NPG"></script>
 <script>
+  document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
