@@ -17,7 +17,7 @@ fetchRandomWord();
 {
 document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;
 }
-  // Fetch last modified date and apply it to the udate element that is on some
+// Fetch last modified date and apply it to the udate element that is on some
 // pages.
 
 // Defined the copyToClipboard function, that is used on some pages
