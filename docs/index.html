@@ -23,11 +23,23 @@ fetch('https://api.ipify.org?format=json')
     document.getElementById("ip").title = data.org
 });
 </script>
-<ul>
-  <li><a class="active" href="/">🏡SLF</a></li>
-  <li><a href="https://status.sillylittle.tech">🔥Status</a></li>
-  <li><a href="https://go.sillylittle.tech">Go🔗</a></li>
-</ul>
+<div class="topnav">
+
+  <!-- Centered link -->
+  <div class="topnav-centered">
+    <a href="/" class="active">🏡SLF</a>
+  </div>
+  
+  <!-- Left-aligned links (default) -->
+    <a href="https://status.sillylittle.tech" class="active">🔥Status</a>
+  
+  <!-- Right-aligned links -->
+  <div class="topnav-right">
+    <a href="https://go.sillylittle.tech" class="active">Go🔗</a>
+  </div>
+  
+</div>
+
 <a href="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/overview/main">
     <img src="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/badge/main" alt="CodeFactor" />
 </a>
