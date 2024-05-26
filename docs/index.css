@@ -18,6 +18,9 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 li a:visited {
   color: white;
