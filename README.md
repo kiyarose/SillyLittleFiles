@@ -3,7 +3,7 @@
 \
 [Go Tool Source Code](https://github.com/DamianSwanAAJHS2/acprox) <sub>Powered by [<img width=18 src="https://vercel.com/favicon.ico"></img>](https://vercel.app)</sub>\
 [Self Hosting Documentation Source](https://github.com/DamianSwanAAJHS2/sillylittle.selfhost) <sub>Powered by [<img width=18 src="https://docus.dev/favicon.ico"></img>](https://docus.dev/)</sub>
-
+\
 <a href="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/overview/main">
     <img src="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/badge/main" alt="CodeFactor" />
 </a>
