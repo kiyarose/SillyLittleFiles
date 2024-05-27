@@ -2,7 +2,8 @@
 
 Source code for SLF website\
 [Status Page Source Code](https://github.com/DamianSwanAAJHS2/SillyLittleFiles.status)\
-[Go Tool Source Code](https://github.com/DamianSwanAAJHS2/acprox)
+[Go Tool Source Code](https://github.com/DamianSwanAAJHS2/acprox)\
+[Self Hosting Documentation Source](https://github.com/DamianSwanAAJHS2/sillylittle.selfhost)
 
 <a href="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/overview/main">
     <img src="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/badge/main" alt="CodeFactor" />
