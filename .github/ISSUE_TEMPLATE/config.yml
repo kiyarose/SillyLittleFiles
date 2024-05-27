@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Status Page
+    url: https://status.sillylittle.tech
+    about: Check the Status page for updates
