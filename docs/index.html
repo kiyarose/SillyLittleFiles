@@ -10,6 +10,12 @@
         <h3 id="region">Fetching...</h3>
 </div>
 <script>
+  function headlinks() {
+        var domain = document.domain
+        document.getElementById("statuslink").href = "https://status." + home
+        document.getElementById("golink").href = "https://go." + home
+
+  }
 fetch('https://api.ipify.org?format=json')
 .then(results => results.json())
 .then(data => {
@@ -23,19 +29,19 @@ fetch('https://api.ipify.org?format=json')
     document.getElementById("ip").title = data.org
 });
 </script>
-<div class="topnav">
+<div class="topnav" onload="headlinks()">
 
   <!-- Centered link -->
   <div class="topnav-centered">
-    <a href="/" selected class="active">🏡Home</a>
+    <a href="https://github.com/DamianSwanAAJHS2/SillyLittleFiles" selected class="active">🏡Github</a>
   </div>
 
   <!-- Left-aligned links (default) -->
-    <a href="https://status.sillylittle.tech" class="active">🔥Status</a>
+    <a href="https://status.sillylittle.tech" id="statuslink" class="active">🔥Status</a>
 
   <!-- Right-aligned links -->
   <div class="topnav-right">
-    <a href="https://go.sillylittle.tech" class="active">Go🔗</a>
+    <a href="https://go.sillylittle.tech" id="golink" class="active">Go🔗</a>
     <a href="https://docs.sillylittle.tech/" class="active">Self-Hosting Docs💻</a>
   </div>
 
