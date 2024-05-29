@@ -18,8 +18,6 @@
 document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;
   function headlinks() {
         var domain = document.domain
-        const parts = domain.split('.');
-        const home = parts.slice(-2).join('.'); // Take the last two parts and join them with a dot
         document.getElementById("proxlink").href = "https://go." + home
         document.getElementById("statuslink").href = "https://status." + home
         document.getElementById("urlmaker").href = "https://go." + home + "/urlmaker.html"
