@@ -3,19 +3,28 @@
 <div class=wrapper>
 <link rel="stylesheet" type="text/css" href="/style.css">
 <script src="/star.js"></script>
-<body class="centre">
+<body class="centre" onload="headlinks()">
 <div class=text-container>
 <a href="/">←Homepage</a><br>
 <a href="filecreator.html">📂 File Creator</a><br>
 <a href="/tools/directory/">🎬 Directory</a><br>
 <a href="editjsn.html">✒️ Edit JSON</a><br>
-<a href="https://status.sillylittle.tech">✅ Status (🚪)</a><br>
-<a href="https://go.sillylittle.tech">🎚️ Go Prox (🚪)</a><br>
-<a href="https://go.sillylittle.tech/urlmaker.html">🪄 Prox URL maker (🚪)</a><br>
+<a href="https://status.sillylittle.tech" id="statuslink">✅ Status (🚪)</a><br>
+<a href="https://go.sillylittle.tech" id="proxlink">🎚️ Go Prox (🚪)</a><br>
+<a href="https://go.sillylittle.tech/urlmaker.html" id="urlmaker">🪄 Prox URL maker (🚪)</a><br>
 </div>
 </body>
 <script>
 document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;
+  function headlinks() {
+        var domain = document.domain
+        const parts = domain.split('.');
+        const home = parts.slice(-2).join('.'); // Take the last two parts and join them with a dot
+        document.getElementById("proxlink").href = "https://go." + home
+        document.getElementById("statuslink").href = "https://status." + home
+        document.getElementById("urlmaker").href = "https://go." + home + "/urlmaker.html"
+
+  }
 </script>
 </center>
 </div>
