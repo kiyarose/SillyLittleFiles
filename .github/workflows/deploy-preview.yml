@@ -19,9 +19,6 @@ jobs:
       - if: ${{ failure() }}
         uses: mxschmitt/action-tmate@v3
       - if: ${{ failure() }}
-        GH_TOKEN: ${{ github.token }}
-        run: |
-            gh issue comment ${{ github.event.number }} -F body="**Deployment to Preview Channel Failed!**
-
-            This pull request could not be deployed to the preview channel. Because of this, a tmate session has spawned!"
-     
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: "An Error Happened! on Preview Deployment A tmate debugging session spawned, check it out to complete runtime!!!"
