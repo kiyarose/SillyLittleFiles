@@ -1,4 +1,4 @@
-name: Tmate CI
+name: CI
 on: [push]
 jobs:
   build:
@@ -8,7 +8,7 @@ jobs:
     - name: Setup tmate session
       if: ${{ failure() }}
       uses: mxschmitt/action-tmate@v3
-    - name: Comment on PR
+    - name: Failure tmate comment
       if: ${{ failure() }}
       uses: mshick/add-pr-comment@v2
       with:
