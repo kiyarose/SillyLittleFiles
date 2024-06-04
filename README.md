@@ -1,12 +1,12 @@
 # [Silly Little Files](https://sillylittle.tech)
 
-[Status Page Source Code](https://github.com/DamianSwanAAJHS2/SillyLittleFiles.status) <sub>Powered by [<img width=18 src="https://betterstack.com/assets/favicon-ad4a170f31b6075c4d7ea5e23ce36677b3412bdd2fabc48d1b688bc535c8821c.png"></img>](https://betterstack.com/?_ph=18f837db9f8620-07c6a0eb476ade-4c657b58-1fa400-18f837db9f915c7&_s=18f837dba5677d-06e71c62e075b-4c657b58-1fa400-18f837dba571631&_st=1715898006102)</sub>
+[Status Page Source Code](https://github.com/dswan36/SillyLittleFiles.status) <sub>Powered by [<img width=18 src="https://betterstack.com/assets/favicon-ad4a170f31b6075c4d7ea5e23ce36677b3412bdd2fabc48d1b688bc535c8821c.png"></img>](https://betterstack.com/?_ph=18f837db9f8620-07c6a0eb476ade-4c657b58-1fa400-18f837db9f915c7&_s=18f837dba5677d-06e71c62e075b-4c657b58-1fa400-18f837dba571631&_st=1715898006102)</sub>
 \
-[Go Tool Source Code](https://github.com/DamianSwanAAJHS2/acprox) <sub>Powered by [<img width=18 src="https://vercel.com/favicon.ico"></img>](https://vercel.app)</sub>\
-[Self Hosting Documentation Source](https://github.com/DamianSwanAAJHS2/sillylittle.selfhost) <sub>Powered by [<img width=18 src="https://docus.dev/favicon.ico"></img>](https://docus.dev/)</sub>
+[Go Tool Source Code](https://github.com/dswan36/acprox) <sub>Powered by [<img width=18 src="https://vercel.com/favicon.ico"></img>](https://vercel.app)</sub>\
+[Self Hosting Documentation Source](https://github.com/dswan36/sillylittle.selfhost) <sub>Powered by [<img width=18 src="https://docus.dev/favicon.ico"></img>](https://docus.dev/)</sub>
 \
-<a href="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/overview/main">
-<img src="https://www.codefactor.io/repository/github/damianswanaajhs2/sillylittlefiles/badge/main" alt="CodeFactor" />
+<a href="https://www.codefactor.io/repository/github/dswan36/sillylittlefiles/overview/main">
+<img src="https://www.codefactor.io/repository/github/dswan36/sillylittlefiles/badge/main" alt="CodeFactor" />
 </a>
 <a href="https://app.deepsource.com/gh/DamianSwanAAJHS2/SillyLittleFiles/" target="_blank">
 <img alt="DeepSource" title="DeepSource" src="https://app.deepsource.com/gh/DamianSwanAAJHS2/SillyLittleFiles.svg/?label=active+issues&show_trend=false&token=TNRs88MO0hVNrxbnPGqcgvvb"/>
