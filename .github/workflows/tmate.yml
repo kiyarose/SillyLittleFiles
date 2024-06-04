@@ -6,4 +6,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Setup tmate session
+      if: ${{ failure() }}
       uses: mxschmitt/action-tmate@v3
+    - name: Comment on PR
+      uses: mshick/add-pr-comment@v2
+      with:
+        message: "An Error Happened! A tmate debugging session spawned, check it out to complete runtime!!!"
