@@ -24,6 +24,8 @@ jobs:
       - if: ${{ failure() }}
         uses: mshick/add-pr-comment@v2
         with:
-          message: "An Error Happened on Production Deployment: A tmate debugging session spawned, discover the issue, and make a PR with a hotfix!"
+          message: |
+            An Error Happened on Production Deployment: A tmate debugging session spawned, discover the issue, and make a PR with a hotfix!
+            This was triggered by ${{ github.sha }} on the runner @ ${{ github.run_id }}
       - if: ${{ failure() }}
         uses: mxschmitt/action-tmate@v3
