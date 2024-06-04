@@ -1,9 +1,9 @@
 ---
 name: Bug report
 about: Make a report about an issue.
-title: "[Bug] "
+title: "[ Bug ] :"
 labels: bug
-assignees: DamianSwanAAJHS2
+assignees: dswan36
 ---
 
 **Describe the bug**
