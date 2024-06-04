@@ -23,3 +23,10 @@ jobs:
           channelId: live
       - if: ${{ failure() }}
         uses: mxschmitt/action-tmate@v3
+      - if: ${{ failure() }}
+        run: |
+          if [ $? -ne 0 ]; then
+            gh issue comment ${{ github.event.number }} -F body="**Deployment to Production Channel Failed!**
+
+            This pull request could not be deployed to the production channel. Because of this, a tmate session has spawned!"
+     
