@@ -17,7 +17,6 @@ jobs:
           expires: 1d
           projectId: sillylittlefiles
       - if: ${{ failure() }}
-        uses: mxschmitt/action-tmate@v3
-        uses: mshick/add-pr-comment@v2
+        uses: mxschmitt/action-tmate@v3, mshick/add-pr-comment@v2
           with:
               message: "An Error Happened! A tmate debugging session spawned, check it out to complete runtime!!!"
