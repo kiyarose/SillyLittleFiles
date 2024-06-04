@@ -21,7 +21,7 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           projectId: sillylittlefiles
           channelId: live
-          if: ${{ failure() }}
+      - if: ${{ failure() }}
           uses: mxschmitt/action-tmate@v3
           uses: mshick/add-pr-comment@v2
           with:
