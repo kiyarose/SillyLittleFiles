@@ -21,3 +21,8 @@ jobs:
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
           projectId: sillylittlefiles
           channelId: live
+          if: ${{ failure() }}
+          uses: mxschmitt/action-tmate@v3
+          uses: mshick/add-pr-comment@v2
+          with:
+              message: "An Error Happened! A tmate debugging session spawned, check it out to complete runtime!!!"
