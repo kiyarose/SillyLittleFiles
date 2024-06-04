@@ -5,16 +5,10 @@ on:
 #    branches: [ !dependabot/** ]
 
 jobs:
-  build_and_preview:
+  fail-job:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      # Add your build steps here (e.g., npm ci && npm run build)
-      - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          expires: 1d
-          projectId: sillylittlefiles
+      - name: Fail the Build
+        run: exit 1
       - if: ${{ failure() }}
         uses: mxschmitt/action-tmate@v3
