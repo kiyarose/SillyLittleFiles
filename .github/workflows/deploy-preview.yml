@@ -24,3 +24,10 @@ jobs:
             This was triggered by ${{ github.sha }} on the runner @ ${{ github.run_id }}
       - if: ${{ failure() }}
         uses: mxschmitt/action-tmate@v3
+      - if: ${{ failure() }}
+        uses: mshick/add-pr-comment@v2
+        with:
+          message: |
+            ~~An Error Happened on Preview Deployment: A tmate debugging session spawned, check details to connect and debug.
+            This was triggered by ${{ github.sha }} on the runner @ ${{ github.run_id }}~~
+            Tmate session was closed
