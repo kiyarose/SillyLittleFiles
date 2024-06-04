@@ -17,8 +17,8 @@ jobs:
           expires: 1d
           projectId: sillylittlefiles
       - if: ${{ failure() }}
-        uses: mxschmitt/action-tmate@v3
-      - if: ${{ failure() }}
         uses: mshick/add-pr-comment@v2
         with:
-          message: "An Error Happened! on Preview Deployment A tmate debugging session spawned, check it out to complete runtime!!!"
+          message: "An Error Happened on Preview Deployment: A tmate debugging session spawned, check details to connect and debug."
+      - if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
