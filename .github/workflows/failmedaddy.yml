@@ -1,0 +1,10 @@
+name: Always Fail
+
+on: [push]
+
+jobs:
+  fail-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail the Build
+        run: exit 1
