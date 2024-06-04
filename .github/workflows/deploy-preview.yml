@@ -17,4 +17,4 @@ jobs:
           expires: 1d
           projectId: sillylittlefiles
       - if: ${{ failure() }}
-        uses: mxschmitt/action-tmate@v3, mshick/add-pr-comment@v2
+        uses: mxschmitt/action-tmate@v3
