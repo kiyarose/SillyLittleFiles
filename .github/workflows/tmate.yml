@@ -9,6 +9,7 @@ jobs:
       if: ${{ failure() }}
       uses: mxschmitt/action-tmate@v3
     - name: Comment on PR
+      if: ${{ failure() }}
       uses: mshick/add-pr-comment@v2
       with:
         message: "An Error Happened! A tmate debugging session spawned, check it out to complete runtime!!!"
