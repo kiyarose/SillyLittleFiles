@@ -13,6 +13,7 @@ jobs:
       - if: ${{ failure() }}
         uses: mxschmitt/action-tmate@v3
       - if: ${{ failure() }}
+        GH_TOKEN: ${{ github.token }}
         run: |
             gh issue comment ${{ github.event.number }} -F body="**Deployment to Preview Channel Failed!**
 
