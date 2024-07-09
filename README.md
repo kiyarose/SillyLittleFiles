@@ -11,6 +11,7 @@ See https://github.com/dswan36/SillyLittleFiles/discussions/267 for more info!
 [ACPROX Source Code](https://github.com/dswan36/acprox) <sub>Powered by [<img width=18 src="https://vercel.com/favicon.ico"></img>](https://vercel.app)</sub>\
 [Self Hosting Documentation Source](https://github.com/dswan36/sillylittle.selfhost) <sub>Powered by [<img width=18 src="https://docus.dev/favicon.ico"></img>](https://docus.dev/)</sub>\
 [EZPROX Source Code](https://github.com/dswan36/ezprox) <sub>Powered by [<img width=18 src="https://vercel.com/favicon.ico"></img>](https://vercel.app)</sub>
+
 \
 <a href="https://www.codefactor.io/repository/github/dswan36/sillylittlefiles/overview/main">
 <img src="https://www.codefactor.io/repository/github/dswan36/sillylittlefiles/badge/main" alt="CodeFactor" />
