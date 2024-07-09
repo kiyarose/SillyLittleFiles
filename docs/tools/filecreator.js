@@ -17,16 +17,20 @@ function submit() {
   text = text.replace('"Username": "USNM"', '"Username": "' + username + '"');
   text = text.replace('"Password": "PASSD"', '"Password": "' + password + '"');
   inputBox.value = text; // Inject data into inputbox
-  var ftext = document.getElementById("inputBox").value; // And now a new variable to prevent duplacated declarations
+  var ftext =
+      document.getElementById("inputBox")
+          .value; // And now a new variable to prevent duplacated declarations
   var element = document.createElement("a");
   element.setAttribute(
-    "href",
-    "data:text/plain;charset=utf-8," + encodeURIComponent(ftext), // Inject that var into the onc text/plain format
+      "href",
+      "data:text/plain;charset=utf-8," +
+          encodeURIComponent(
+              ftext), // Inject that var into the onc text/plain format
   );
   async function fetchRandomWord() {
     try {
       const response = await fetch(
-        "https://random-word-api.herokuapp.com/word",
+          "https://random-word-api.herokuapp.com/word",
       );
       const data = await response.json();
 
