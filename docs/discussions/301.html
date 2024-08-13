@@ -1,0 +1,167 @@
+<!DOCTYPE =HTML>
+<div class=wrapper>
+<head>
+        <a href="/" style="position: fixed; top: 10px; left: 10px; display: none;" id="backLink">←Homepage</a>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-009HP51NPG">
+         window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-009HP51NPG');
+        window.addEventListener('scroll', function() {
+                var backLink = document.getElementById('backLink');
+                if (window.scrollY === 0) {
+                        backLink.style.display = 'none';
+                } else {
+                        backLink.style.display = 'block';
+                }
+        });
+</script>
+<link rel="stylesheet" type="text/css" href="/style.css">
+<script src="/star.js"></script>
+
+
+
+<h1 id="ex">Getting Started!</h1>
+<a href="/">←Back</a>
+<a href="#" font-style:italic;" onclick="copyToClipboard(window.location.href)">Copy Link</a><br>
+
+<br>
+<h1 id="intro">Intro</h1>
+If you are looking at this, you mayhaps be interesting in getting around network blocks on your device?
+
+If you are simply looking for a Prox(y) setup, this isn't for that;
+<ul>
+    <li>You can either use <a href='https://go.sillylittle.tech'>go.sillylittle.tech</a></li>
+    <li>or</li>
+    <li>append your destination to <a href="https://prox.sillylittle.tech">prox.sillylittle.tech</a> Read about these further <a href="#other-tools">below</a>.</li>
+</ul>
+<br>
+<hr class="divider">
+<h1>Proton configs on ChromeOS</h1>
+        <br>
+<h2>Making an IPSec config via Proton</h2>
+<a
+href="https://account.proton.me/vpn/signup?plan=free&billing=12&minimumCycle=12"
+>Make a Proton account</a
+><br />
+A good website to make a burner email for this is
+<a href="https://signup.mail.com/#.7518-header-signup1-1">mail.com</a>(they don't verify info).
+<br>Or you can make your own <a href="https://account.proton.me/mail/signup?plan=free&billing=12&minimumCycle=12">Proton email</a> and use that here instead.<br /><br>
+Go to the
+<a href="https://account.proton.me/u/6/vpn/OpenVpnIKEv2"
+>Proton accounts dashboard</a
+>
+<br>
+<img src="https://github.com/dswan36/SillyLittleFiles/assets/75678535/0d5de285-fdb6-4d36-b777-25f1f708f68e" width="600" />
+<br>
+and note your credentials<br />
+<br>Create a file using the <a href='/tools/filecreator.html'>File Creator</a>
+<br><hr class="divider">
+<h1>Importing files into ChromeOS</h1>
+Go to <code>chrome://network</code><br>
+<br>
+Scroll to the bottom and press <code>Import ONC</code>, then upload the onc file<br>
+Delete the file and then go to your quick access settings (click the clock) <br>
+Click <code>VPN</code>, and then the name you selected<br>
+Depending on how used to account is, or how ratedlimited it is. It should a couple seconds. If it dosen't connect right away, try again or wait until later.<br>
+<br>
+<h2>Video on Creating and Importing</h2>
+<video width="500" height="500" controls>
+    <source src="/discussions/google_screen_recording_2024-05-08T04-12_14.958Z.webm" type="video/webm">
+  Your browser does not support the video tag.
+  </video><br><br>
+<hr class="divider">
+
+<h1>Changing your file's region</h1>
+        <br>
+<h2>Getting the hostname</h2>
+        <br>
+<h3>Server Directory</h3>
+You need another hostname or port to change your file's region, these are listed <a href="/tools/directory/serverlister.html">here</a>
+<br>
+        <br><h3>Manual</h3>
+Or you can get this hostname from a .ovpn file.
+on the <a href="https://account.proton.me/u/6/vpn/OpenVpnIKEv2">IKEv2</a> page. Download a file from a region you want to emulate.<br>
+For example;<br>
+<img src="/discussions/328875738-9d3fa4f4-b6fb-434f-95cd-a85d4c2a1ed6.png" width=600 alt="image"/>
+<br>
+Once downloading it,
+Drag it from the ChromeOS files app into the browser, it should now open in browser
+Somewhere in the file you should see numbers in this format ##.##.###.###
+        <br>
+<h2>Changing in file creator</h2>
+Those numbers are your new hostname to put in the file creator.
+<h3>Video outlining these changes.</h3>
+<video width="500" height="500" controls>
+    <source src="/discussions/google_screen_recording_2024-05-08T12-05_14.026Z.webm" type="video/webm">
+  Your browser does not support the video tag.
+  </video><br><br>
+        <hr class="divider">
+
+<h1>Prox tools</h1>
+        <br>
+<h2>ACPROX/GoTool</h2>
+        <br>
+<h3>About</h3>
+The all new <a href="https://go.sillylittle.tech">Go Tool</a> allows you to proxy yourself into different pages using the Ultraviolet framework<br>
+<img src="https://github.com/dswan36/SillyLittleFiles/assets/75678535/e62e7bcf-d329-4971-a9c3-4c135a1cb5fe" width="600" />
+<br>
+<sub>Hey! Look, Google But... notice this distinct lack of google.com, in the address bar!</sub>
+<br><br>
+<h2 id="other-tools">Other Tools</h2>
+        <br>
+<h3>Go Tool Details</h3>
+        <br>
+Find or make an App to use, search for quick access, or look in the settings for some fun options<br>
+<img src="https://github.com/dswan36/SillyLittleFiles/assets/75678535/c6e589da-d633-40d6-9cbb-0190dcdbf076" width="600" />
+<br><h3>Web Inspect</h3><br>
+Need to launch inspect element but don't have a supported device? Try this...
+<ol>
+  <li>Copy the code below:<br><code>(function () { var script = document.createElement('script'); script.src="https://go.sillylittle.tech/eruda.js"; document.body.append(script); script.onload = function () { eruda.init(); } })();</code></li>
+  <li>In the page you want to inspect, click & focus the address bar<br><img src="https://github.com/dswan36/SillyLittleFiles/assets/75678535/c13a2cb4-6c4f-425b-94f4-18cf121fb3df" width="190" /><br><sub>It's this!</sub></li>
+  <li>Type <code>javascript:</code>, and then paste the code from step 1!</li>
+  <li>Press <code>enter</code></li>
+  <li>Click the ⚙️ looking icon in the bottom right and have fun!</li>
+</ol>
+
+<br><br>
+<h2>EZPROX</h2>
+EZPROX is a web prox tool that simply expects a URL after the first /, you can read about it <a href="https://docs.sillylittle.tech/setup/ezprox">here</a>
+<br><hr class="divider"><h1>Further</h1>
+<h2>Status</h2>
+Are the websites up? <br>
+<a href="https://status.sillylittle.tech">status.sillylittle.tech</a><br>
+<h2>Self hosting docs</h2>
+Docs for self hosting these tools on your own <br>
+<a href="https://docs.sillylittle.tech">docs.sillylittle.tech</a><br><br>
+        <hr class="divider">
+<p style="font-style:italic;">Contact: </p><a style="font-style:italic;" href="mailto: technical@sillylittle.tech">technical@sillylittle.tech</a>
+<p id="udate" style="color:lightgrey; font-style:italic;">Synced: </p>
+
+<script>
+document.getElementById("udate").innerHTML = document.getElementById("udate").innerHTML + document.lastModified;
+</script>
+</center>
+<script src="https://giscus.app/client.js"
+        data-repo="dswan36/SillyLittleFiles"
+        data-repo-id="R_kgDOJPpxXw"
+        data-mapping="number"
+        data-term="301"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="light"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+</div>
+<meta property="description" content="Silly Little Files Getting Started" />
+<meta property="og:image" content="https://status.sillylittle.tech/assets/status_pages_v2/favicons/operational-4a98629aac4c4be550d1c9eebbdade51ed628b4b9841ad08ffc8e326477448d7.png">
+<meta property="og:site_name" content="https://sillylittle.tech/discussions/301">
+<meta property="og:title" content="SLF - Getting started">
+<meta property="og:title" content="Silly Little Files Getting Started">
+<meta property="og:url" content="https://sillylittle.tech/dicussions/301">
