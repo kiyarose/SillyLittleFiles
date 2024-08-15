@@ -5,7 +5,7 @@ async function fetchRandomWord () {
     const response = await fetch('https://random-word-api.herokuapp.com/word')
     const data = await response.json()
 
-    document.title = 'SLF — ' + data // Set the page title to the random word
+    document.title = `SLF — ${data}` // Set the page title to the random word
   } catch (error) {
     console.error('Error fetching word:', error)
   }
