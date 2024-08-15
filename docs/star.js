@@ -1,5 +1,5 @@
 const wordElement = document.getElementById("random-word");
-
+//Fetch a random word for page title and downloads
 async function fetchRandomWord() {
   try {
     const response = await fetch("https://random-word-api.herokuapp.com/word");
