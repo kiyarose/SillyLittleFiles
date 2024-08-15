@@ -1,6 +1,6 @@
 const wordElement = document.getElementById('random-word')
 // Fetch a random word for page title and downloads
-async function fetchRandomWord () {
+async function fetchRandomWord() {
   try {
     const response = await fetch('https://random-word-api.herokuapp.com/word')
     const data = await response.json()
@@ -22,14 +22,16 @@ fetchRandomWord()
 // pages.
 
 // Defined the copyToClipboard function, that is used on some pages
-function copyToClipboard (text) {
+function copyToClipboard(text) {
   const textarea = document.createElement('textarea')
   textarea.textContent = text
-  textarea.style.position = 'fixed' // Prevent scrolling to bottom of page in MS Edge.
+  textarea.style.position =
+      'fixed' // Prevent scrolling to bottom of page in MS Edge.
   document.body.appendChild(textarea)
   textarea.select()
   try {
-    return document.execCommand('copy') // Security exception may be thrown by some browsers.
+    return document.execCommand(
+        'copy') // Security exception may be thrown by some browsers.
   } catch (ex) {
     console.warn('Copy to clipboard failed.', ex)
     return false
