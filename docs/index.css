@@ -1,7 +1,6 @@
 .topnav {
   position: relative;
   overflow: hidden;
-
 }
 
 .topnav a {
@@ -10,7 +9,6 @@
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-
 }
 
 .topnav-centered a {
@@ -27,7 +25,8 @@
 
 /* Responsive navigation menu (for mobile devices) */
 @media screen and (max-width: 600px) {
-  .topnav a, .topnav-right {
+  .topnav a,
+  .topnav-right {
     float: none;
     display: block;
   }
