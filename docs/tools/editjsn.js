@@ -1,3 +1,4 @@
+// Make the JSON pretty
 function beautifyJSON () {
   const jsonText = document.getElementById('jsonInput').value
   try {
@@ -8,7 +9,7 @@ function beautifyJSON () {
     document.getElementById('output').textContent = 'Error: Invalid JSON'
   }
 }
-
+// Make sure the JSON isnt crap
 function validateJSON () {
   const jsonText = document.getElementById('jsonInput').value
   try {
@@ -18,7 +19,7 @@ function validateJSON () {
     document.getElementById('output').textContent = 'Error: Invalid JSON'
   }
 }
-
+// Download the good JSON
 function downloadJSON () {
   const jsonText = document.getElementById('jsonInput').value
   const filename = 'out.json'
