@@ -1,5 +1,5 @@
 // Make the JSON pretty
-function beautifyJSON () {
+function beautifyJSON() {
   const jsonText = document.getElementById('jsonInput').value
   try {
     const jsonData = JSON.parse(jsonText)
@@ -10,7 +10,7 @@ function beautifyJSON () {
   }
 }
 // Make sure the JSON isnt crap
-function validateJSON () {
+function validateJSON() {
   const jsonText = document.getElementById('jsonInput').value
   try {
     JSON.parse(jsonText)
@@ -20,10 +20,10 @@ function validateJSON () {
   }
 }
 // Download the good JSON
-function downloadJSON () {
+function downloadJSON() {
   const jsonText = document.getElementById('jsonInput').value
   const filename = 'out.json'
-  const blob = new Blob([jsonText], { type: 'application/json' })
+  const blob = new Blob([ jsonText ], {type : 'application/json'})
   const link = document.createElement('a')
   link.href = URL.createObjectURL(blob)
   link.download = filename
