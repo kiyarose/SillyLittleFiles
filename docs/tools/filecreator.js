@@ -1,5 +1,5 @@
 // Collage all the data
-function submit () {
+function submit() {
   const nametype = document.getElementById('nametype').value
   const hostname = document.getElementById('hostname').value
   const hostport = document.getElementById('hostport').value
@@ -18,18 +18,20 @@ function submit () {
   text = text.replace('"Username": "USNM"', `"Username": "${username}"`)
   text = text.replace('"Password": "PASSD"', `"Password": "${password}"`)
   inputBox.value = text // Inject data into inputbox
-  const ftext = document.getElementById('inputBox').value // And now a new variable to prevent duplacated declarations
+  const ftext =
+      document.getElementById('inputBox')
+          .value // And now a new variable to prevent duplacated declarations
   const element = document.createElement('a')
   element.setAttribute(
-    'href',
-    `data:text/plain;charset=utf-8, ${encodeURIComponent(ftext)}` // Inject that var into the onc text/plain format
+      'href',
+      `data:text/plain;charset=utf-8, ${
+          encodeURIComponent(
+              ftext)}` // Inject that var into the onc text/plain format
   )
   // Fetch a random word and make it do things
-  async function fetchRandomWord () {
+  async function fetchRandomWord() {
     try {
-      const response = await fetch(
-        'https://random-word-api.herokuapp.com/word'
-      )
+      const response = await fetch('https://random-word-api.herokuapp.com/word')
       const data = await response.json()
 
       const filename = `${data}.onc` // Set the page title to the random word
@@ -41,7 +43,7 @@ function submit () {
     }
   }
   // LGTM, Download the file
-  async function downloadFile () {
+  async function downloadFile() {
     try {
       const filename = await fetchRandomWord()
       element.setAttribute(`download ${filename}`)
