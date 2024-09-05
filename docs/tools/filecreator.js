@@ -1,3 +1,4 @@
+// Collage all the data 
 function submit () {
   const nametype = document.getElementById('nametype').value
   const hostname = document.getElementById('hostname').value
@@ -23,6 +24,7 @@ function submit () {
     'href',
     `data:text/plain;charset=utf-8, ${encodeURIComponent(ftext)}` // Inject that var into the onc text/plain format
   )
+  // Fetch a random word and make it do things
   async function fetchRandomWord () {
     try {
       const response = await fetch(
@@ -38,6 +40,7 @@ function submit () {
       return filename
     }
   }
+  // LGTM, Download the file
   async function downloadFile () {
     try {
       const filename = await fetchRandomWord()
