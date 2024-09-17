@@ -1,4 +1,4 @@
-// Collage all the data 
+// Collage all the data
 function submit () {
   const nametype = document.getElementById('nametype').value
   const hostname = document.getElementById('hostname').value
