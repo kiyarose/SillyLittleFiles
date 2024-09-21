@@ -74,6 +74,7 @@ function DropdownSet () {
   s1.style.display = 'none'
   console.log('Set visibility to none to prevent dual clicking')
 }
+// Toggle dropdown
 function toggleDropdown (dropdownId) {
   const dropdown = document.getElementById(dropdownId)
   if (dropdown.style.display === 'none') {
