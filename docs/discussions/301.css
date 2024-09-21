@@ -1,15 +1,3 @@
-a {
-  color: white;
-  text-decoration: underline;
-  text-underline-position: under;
-  cursor: help;
-}
-a:visited {
-  color: pink;
-  text-decoration: underline;
-  text-underline-position: under;
-  cursor: help;
-}
 .dropdown {
   display: none;
   animation: magicLamp 1s ease-in-out;
