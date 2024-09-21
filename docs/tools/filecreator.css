@@ -10,11 +10,6 @@ a:visited {
   text-underline-position: under;
   cursor: help;
 }
-.dropdown {
-  display: none;
-  animation: magicLamp 1s ease-in-out;
-}
-
 @keyframes magicLamp {
   0% {
     opacity: 0;
