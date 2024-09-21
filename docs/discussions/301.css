@@ -1,15 +1,3 @@
-a {
-  color: white;
-  text-decoration: underline;
-  text-underline-position: under;
-  cursor: help;
-}
-a:visited {
-  color: pink;
-  text-decoration: underline;
-  text-underline-position: under;
-  cursor: help;
-}
 @keyframes magicLamp {
   0% {
     opacity: 0;
@@ -24,14 +12,6 @@ a:visited {
     transform: scale(1);
   }
 }
-
-/* Updated styles for the center element */
-/* center {
-        margin-left: 20px;
-        margin-right: 20px;
-        max-width: 800px;
-      }
-      */
 .dropdown {
   display: none;
   animation: magicLamp 1s ease-in-out;

@@ -21,15 +21,35 @@
 </script>
 <link rel="stylesheet" type="text/css" href="/style.css">
 <script src="/star.js"></script>
+<link rel="stylesheet" type="text/css" href="301.css"">
+<script src="301.js"></script>
 
 
 
 <h1 id="ex">Getting Started!</h1>
 <a href="/">←Back</a>
-<a href="#" font-style:italic;" onclick="copyToClipboard(window.location.href)">Copy Link</a><br>
+<a href="#" font-style:italic;" onclick="copyToClipboard(window.location.href)">📋 Copy Link</a><br>
+      <button onload="DropdownSet()" onclick="toggleDropdown('script0')" style="display: inline-block; padding: 0.5em 1em; font-size: 1em; font-weight: bold; text-align: center; text-decoration: none; background-color: #24292e; color: #ffffff; border: none; border-radius: 6px; cursor: pointer; transition: background-color 0.3s ease;">
+        Table of Contents</button
+      ><br />
+      <div id="script0" class="dropdown">
+<a href="#intro">Intro</a><br>
+<a href="#proton">Making an IPSec config via Proton</a><br>
+<a href="#filecreate">Create a file using the File Creator</a><br>
+<a href="#importing">Importing files into ChromeOS</a><br>
+<a href="#video1">Video on Creating and Importing</a><br>
+<a href="#region">Changing your file's region</a><br>
+<a href="#video2">Video outlining these changes.</a><br>
+<a href="#prox">Prox tools</a><br>
+<a href="#other-tools">Other Tools</a><br>
+<a href="#status">Status Page</a><br>
+<a href="#docs">Self-Hosting Docs</a>
+      </div>
+      <br />
+    <br>
 
 <br>
-<h1 id="intro">Intro</h1>
+<h1 id="intro"><a href="#intro" title="Copy link to header" onclick="copyToClipboard(`${document.location.hostname}${document.location.pathname}#intro`)">📋</a> Intro</h1>
 If you are looking at this, you mayhaps be interesting in getting around network blocks on your device?
 
 If you are simply looking for a Prox(y) setup, this isn't for that;
@@ -42,7 +62,7 @@ If you are simply looking for a Prox(y) setup, this isn't for that;
 <hr class="divider">
 <h1>Proton configs on ChromeOS</h1>
         <br>
-<h2>Making an IPSec config via Proton</h2>
+<h2 id="proton"><a href="#proton" title="Copy link to header" onclick="copyToClipboard(`${document.location.hostname}${document.location.pathname}#proton`)">📋</a> Making an IPSec config via Proton</h2>
 <a
 href="https://account.proton.me/vpn/signup?plan=free&billing=12&minimumCycle=12"
 >Make a Proton account</a
@@ -55,12 +75,12 @@ Go to the
 >Proton accounts dashboard</a
 >
 <br>
-<img src="https://github.com/dswan36/SillyLittleFiles/assets/75678535/0d5de285-fdb6-4d36-b777-25f1f708f68e" width="600" />
+<img src="https://github.com/kiyarose/SillyLittleFiles/assets/75678535/0d5de285-fdb6-4d36-b777-25f1f708f68e" width="600" />
 <br>
 and note your credentials<br />
-<br>Create a file using the <a href='/tools/filecreator.html'>File Creator</a>
+<br id="filecreate"><a href="#filecreate" title="Copy link to header" onclick="copyToClipboard(`${document.location.hostname}${document.location.pathname}#filecreate`)">📋</a> Create a file using the <a href='/tools/filecreator.html'>File Creator</a>
 <br><hr class="divider">
-<h1>Importing files into ChromeOS</h1>
+<h1 id="importing"><a href="#importing" title="Copy link to header" onclick="copyToClipboard(`${document.location.hostname}${document.location.pathname}#importing`)">📋</a> Importing files into ChromeOS</h1>
 Go to <code>chrome://network</code><br>
 <br>
 Scroll to the bottom and press <code>Import ONC</code>, then upload the onc file<br>
@@ -68,14 +88,14 @@ Delete the file and then go to your quick access settings (click the clock) <br>
 Click <code>VPN</code>, and then the name you selected<br>
 Depending on how used to account is, or how ratedlimited it is. It should a couple seconds. If it dosen't connect right away, try again or wait until later.<br>
 <br>
-<h2>Video on Creating and Importing</h2>
+<h2 id="video1"><a href="#video1" title="Copy link to header" onclick="copyToClipboard(`${document.location.hostname}${document.location.pathname}#video1`)">📋</a> Video on Creating and Importing</h2>
 <video width="500" height="500" controls>
     <source src="/discussions/google_screen_recording_2024-05-08T04-12_14.958Z.webm" type="video/webm">
   Your browser does not support the video tag.
   </video><br><br>
 <hr class="divider">
 
-<h1>Changing your file's region</h1>
+<h1 id="region"><a href="#region" title="Copy link to header" onclick="copyToClipboard(`${document.location.hostname}${document.location.pathname}#region`)">📋</a> Changing your file's region</h1>
         <br>
 <h2>Getting the hostname</h2>
         <br>
@@ -94,34 +114,34 @@ Somewhere in the file you should see numbers in this format ##.##.###.###
         <br>
 <h2>Changing in file creator</h2>
 Those numbers are your new hostname to put in the file creator.
-<h3>Video outlining these changes.</h3>
+<h3 id="video2"><a href="#video2" title="Copy link to header" onclick="copyToClipboard(`${document.location.hostname}${document.location.pathname}#video2`)">📋</a> Video outlining these changes.</h3>
 <video width="500" height="500" controls>
     <source src="/discussions/google_screen_recording_2024-05-08T12-05_14.026Z.webm" type="video/webm">
   Your browser does not support the video tag.
   </video><br><br>
         <hr class="divider">
 
-<h1>Prox tools</h1>
+<h1 id="prox"><a href="#prox" title="Copy link to header" onclick="copyToClipboard(`${document.location.hostname}${document.location.pathname}#prox`)">📋</a> Prox tools</h1>
         <br>
 <h2>ACPROX/GoTool</h2>
         <br>
 <h3>About</h3>
 The all new <a href="https://go.sillylittle.tech">Go Tool</a> allows you to proxy yourself into different pages using the Ultraviolet framework<br>
-<img src="https://github.com/dswan36/SillyLittleFiles/assets/75678535/e62e7bcf-d329-4971-a9c3-4c135a1cb5fe" width="600" />
+<img src="https://github.com/kiyarose/SillyLittleFiles/assets/75678535/e62e7bcf-d329-4971-a9c3-4c135a1cb5fe" width="600" />
 <br>
 <sub>Hey! Look, Google But... notice this distinct lack of google.com, in the address bar!</sub>
 <br><br>
-<h2 id="other-tools">Other Tools</h2>
+<h2 id="other-tools"><a href="#other-tools" title="Copy link to header" onclick="copyToClipboard(`${document.location.hostname}${document.location.pathname}#other-tools`)">📋</a> Other Tools</h2>
         <br>
 <h3>Go Tool Details</h3>
         <br>
 Find or make an App to use, search for quick access, or look in the settings for some fun options<br>
-<img src="https://github.com/dswan36/SillyLittleFiles/assets/75678535/c6e589da-d633-40d6-9cbb-0190dcdbf076" width="600" />
+<img src="https://github.com/kiyarose/SillyLittleFiles/assets/75678535/c6e589da-d633-40d6-9cbb-0190dcdbf076" width="600" />
 <br><h3>Web Inspect</h3><br>
 Need to launch inspect element but don't have a supported device? Try this...
 <ol>
   <li>Copy the code below:<br><code>(function () { var script = document.createElement('script'); script.src="https://go.sillylittle.tech/eruda.js"; document.body.append(script); script.onload = function () { eruda.init(); } })();</code></li>
-  <li>In the page you want to inspect, click & focus the address bar<br><img src="https://github.com/dswan36/SillyLittleFiles/assets/75678535/c13a2cb4-6c4f-425b-94f4-18cf121fb3df" width="190" /><br><sub>It's this!</sub></li>
+  <li>In the page you want to inspect, click & focus the address bar<br><img src="https://github.com/kiyarose/SillyLittleFiles/assets/75678535/c13a2cb4-6c4f-425b-94f4-18cf121fb3df" width="190" /><br><sub>It's this!</sub></li>
   <li>Type <code>javascript:</code>, and then paste the code from step 1!</li>
   <li>Press <code>enter</code></li>
   <li>Click the ⚙️ looking icon in the bottom right and have fun!</li>
@@ -131,12 +151,12 @@ Need to launch inspect element but don't have a supported device? Try this...
 <h2>EZPROX</h2>
 EZPROX is a web prox tool that simply expects a URL after the first /, you can read about it <a href="https://docs.sillylittle.tech/setup/ezprox">here</a>
 <br><hr class="divider"><h1>Further</h1>
-<h2>Status</h2>
+<h2 id="status"><a href="#status" title="Copy link to status" onclick="copyToClipboard(`https://status.sillylittle.tech`)">📋</a> Status</h2>
 Are the websites up? <br>
 <a href="https://status.sillylittle.tech">status.sillylittle.tech</a><br>
 <h2>Self hosting docs</h2>
-Docs for self hosting these tools on your own <br>
-<a href="https://docs.sillylittle.tech">docs.sillylittle.tech</a><br><br>
+<a href="#docs" title="Copy link to docs" onclick="copyToClipboard(`https://docs.sillylittle.tech`)">📋</a> Docs for self hosting these tools on your own <br>
+<a id="docs" href="https://docs.sillylittle.tech">docs.sillylittle.tech</a><br><br>
         <hr class="divider">
 <p style="font-style:italic;">Contact: </p><a style="font-style:italic;" href="mailto: technical@sillylittle.tech">technical@sillylittle.tech</a>
 <p id="udate" style="color:lightgrey; font-style:italic;">Synced: </p>
@@ -146,7 +166,7 @@ document.getElementById("udate").innerHTML = document.getElementById("udate").in
 </script>
 </center>
 <script src="https://giscus.app/client.js"
-        data-repo="dswan36/SillyLittleFiles"
+        data-repo="kiyarose/SillyLittleFiles"
         data-repo-id="R_kgDOJPpxXw"
         data-mapping="number"
         data-term="301"
