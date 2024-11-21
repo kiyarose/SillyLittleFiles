@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Securly Tester</title>
+</head>
+<body>
+	User: <input id="user" type="text" placeholder="student@yourschool.org" onkeyup="updateUrl()" onchange="updateUrl()"><br>
+	URL: <input id="url" type="text" placeholder="https://zapatopi.net/treeoctopus/" onkeyup="updateUrl()" onchange="updateUrl()"><br>
+	<a id="link"></a>
+	<script>
+		function updateUrl() {
+			var user = document.getElementById('user').value;
+			var url  = document.getElementById('url').value;
+			var urlHost = (new URL(url)).hostname;
+			
+			var link = "https://useast-www.securly.com/crextn/broker?useremail=" +
+				user + 
+				"&reason=crextn&host=" +
+				urlHost +
+				"&url=" +
+				btoa(url) +
+				"&msg=&ver=2.97.13&cu=https://useast-www.securly.com/crextn&uf=1&cf=1&lat=34.5678910&lng=-98.7654321"
+			document.getElementById('link').href = link;
+			document.getElementById('link').innerText = link;
+		}
+		updateUrl();
+	</script>
+</body>
+</html> 
