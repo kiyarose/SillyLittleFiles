@@ -16,7 +16,7 @@
     <input
       id="url"
       type="text"
-      placeholder="https://zapatopi.net/treeoctopus/"
+      placeholder="example.com"
       onkeyup="updateUrl()"
       onchange="updateUrl()"
     /><br />
@@ -26,7 +26,7 @@
     <script>
       function updateUrl() {
         var user = "@altoonastudent.com"; // encodeURIComponent(document.getElementById("user").value);
-        var url = document.getElementById("url").value;
+        var url = `https://${document.getElementById("url").value;}`
         var urlHost = new URL(url).hostname;
 
         var link =
