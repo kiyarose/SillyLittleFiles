@@ -22,7 +22,7 @@
     /><br />
     <a id="link"></a>
     <iframe id="resframe" src="" title="Results"></iframe>
- <!--  <button onclick="frameit()">button</button> -->
+    <!--  <button onclick="frameit()">button</button> -->
     <script>
       function updateUrl() {
         var user = document.getElementById("user").value;
@@ -37,15 +37,16 @@
           "&url=" +
           btoa(url) +
           "&msg=&ver=2.97.13&cu=https://useast-www.securly.com/crextn&uf=1&cf=1&lat=34.5678910&lng=-98.7654321";
-        document.getElementById("resframe").src = link
+        document.getElementById("resframe").src = link;
         document.getElementById("link").href = link;
         document.getElementById("link").innerText = link;
         return link;
-        
       }
       updateUrl();
 
-      function frameit() { document.getElementById("resframe").src = link }
+      function frameit() {
+        document.getElementById("resframe").src = link;
+      }
     </script>
   </body>
 </html>
