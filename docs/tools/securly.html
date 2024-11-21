@@ -1,17 +1,17 @@
 <!doctype html>
 <html>
   <head>
-    <title>Securly Tester</title>
+    <title>SLF - Securly Tester</title>
   </head>
   <body>
-    User:
+ <!--   User:
     <input
       id="user"
       type="text"
       placeholder="student@yourschool.org"
       onkeyup="updateUrl()"
       onchange="updateUrl()"
-    /><br />
+    /><br /> -->
     URL:
     <input
       id="url"
@@ -20,12 +20,12 @@
       onkeyup="updateUrl()"
       onchange="updateUrl()"
     /><br />
-    <a id="link"></a>
+    <!-- <a id="link"></a> -->
     <iframe id="resframe" src="" title="Results"></iframe>
     <!--  <button onclick="frameit()">button</button> -->
     <script>
       function updateUrl() {
-        var user = encodeURIComponent(document.getElementById("user").value);
+        var user = "@altoonastudent.com" // encodeURIComponent(document.getElementById("user").value);
         var url = document.getElementById("url").value;
         var urlHost = new URL(url).hostname;
 
