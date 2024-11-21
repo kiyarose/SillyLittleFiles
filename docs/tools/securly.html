@@ -1,0 +1,62 @@
+<!DOCTYPE html lang="html">
+<div class=wrapper>
+<html lang="en">
+<!Some Code Generated Via https://markdowntohtml.com/>
+<!DOCTYPE=HTML>
+<link rel="stylesheet" type="text/css" href="/style.css">
+<script src="/star.js"></script>
+<script src="editjsn.js"></script>
+
+
+<a href="/tools/">←All Tools</a>
+
+<body>
+    <h1>Securly Block Checker</h1>
+    URL:
+    <input
+      id="url"
+      type="text"
+      placeholder="https://example.com"
+      onkeyup="updateUrl()"
+      onchange="updateUrl()"
+    /><br />
+    <!-- <a id="link"></a> -->
+    <iframe id="resframe" src="" title="Results"></iframe>
+    <!--  <button onclick="frameit()">button</button> -->
+    <script>
+      function updateUrl() {
+        var user = "@altoonastudent.com"; // encodeURIComponent(document.getElementById("user").value);
+        var url = document.getElementById("url").value;
+        var urlHost = new URL(url).hostname;
+
+        var link =
+          "https://useast-www.securly.com/crextn/broker?useremail=" +
+          user +
+          "&reason=crextn&host=" +
+          urlHost +
+          "&url=" +
+          btoa(url) +
+          "&msg=&ver=2.97.13&cu=https://useast-www.securly.com/crextn&uf=1&cf=1&lat=34.5678910&lng=-98.7654321";
+        document.getElementById("resframe").src = link;
+        document.getElementById("link").href = link;
+        document.getElementById("link").innerText = link;
+        return link;
+      }
+      updateUrl();
+
+      function frameit() {
+        document.getElementById("resframe").src = link;
+      }
+    </script>
+</body>
+</html>
+</center>
+<pre id="output"></pre>
+</div>
+<meta property="description" content="Silly Little Files Securly Block Checker" />
+<meta property="og:image" content="https://status.sillylittle.tech/assets/status_pages_v2/favicons/operational-4a98629aac4c4be550d1c9eebbdade51ed628b4b9841ad08ffc8e326477448d7.png">
+<meta property="og:site_name" content="https://sillylittle.tech/tools/securly">
+<meta property="og:title" content="SLF - Securly Block Checker"">
+<meta property="og:title" content="Silly Little Files Securly Block Checker"">
+<meta property="og:url" content="https://sillylittle.tech/tools/securly">
+<!doctype html>
